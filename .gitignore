@@ -2,3 +2,4 @@ out
 .idea/**/workspace.xml
 .idea/**task.xml
 .idea/dictionaries
+.idea/libraries
