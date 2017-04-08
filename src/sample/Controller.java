@@ -14,8 +14,9 @@ public class Controller implements Initializable {
         System.out.println("Jimmy");
         System.out.println("Konrad");
         System.out.println("JimmyJönsson");
-        System.out.println("Robin");
+        System.out.println("Robi");
         System.out.println("Daniel");
+
 
     }
 }
