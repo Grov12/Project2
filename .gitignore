@@ -3,3 +3,4 @@ out
 .idea/**task.xml
 .idea/dictionaries
 .idea/libraries
+DB.properties
