@@ -19,7 +19,10 @@ import java.util.ResourceBundle;
 public class ControllerPlayer implements Initializable {
 
 
+
     public void initialize(URL location, ResourceBundle resources) {
+
+
     }
 
     @FXML
@@ -37,5 +40,20 @@ public class ControllerPlayer implements Initializable {
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
+
     }
-}
+
+    public void playerview() {
+                try {
+                    ControllerMain main = new ControllerMain();
+                    main.viewPlayers();
+
+                }catch (Exception e) {
+
+                }
+            }
+        }
+
+
+
+

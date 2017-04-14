@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+
 public class ControllerMain implements Initializable {
     @FXML
     private ChoiceBox choiceBox;
@@ -104,7 +106,10 @@ public class ControllerMain implements Initializable {
         }
 
 
-
+    public void viewPlayers() {}
+    public void viewTeam() {}
+    public void viewStatistics() {}
+    public void viewMatches() {}
 }
 
 
