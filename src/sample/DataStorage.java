@@ -7,11 +7,11 @@ import java.util.ArrayList;
  */
 public class DataStorage {
 
-    public ArrayList<Player> playerList;
-    public ArrayList<Match> matchList;
-    public ArrayList<Training> trainingList;
-    public ArrayList<Coach> coachList;
-    public ArrayList<Team> teamList;
+   // public ArrayList<Player> playerList;
+    //public ArrayList<Match> matchList;
+    //public ArrayList<Training> trainingList;
+   // public ArrayList<Coach> coachList;
+   // public ArrayList<Team> teamList; //
 
     private static DataStorage instance;
 

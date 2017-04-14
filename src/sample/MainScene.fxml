@@ -24,7 +24,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="edit" mnemonicParsing="false" onAction="#handleMenuItemEdit" text="Clear Scene" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,6 +20,12 @@ import java.util.ResourceBundle;
 public class ControllerMain implements Initializable {
     @FXML
     private ChoiceBox choiceBox;
+    @FXML
+    private TextField textUsername;
+    @FXML
+    private TextField textPassword;
+
+
 
 
     @Override
@@ -26,6 +33,8 @@ public class ControllerMain implements Initializable {
         choiceBox.getItems().add("Guest");
         choiceBox.getItems().add("Coach");
         choiceBox.getItems().add("Player");
+
+
 
     }
 
@@ -84,5 +93,19 @@ public class ControllerMain implements Initializable {
                 stage.setScene(scene);
             }
         }
-    }
+        public void handleMenuItemEdit() {
+            if(!textUsername.getText().isEmpty() || !textPassword.getText().isEmpty() || !choiceBox.getValue().equals(null)) {
+                textUsername.clear(); textPassword.clear();
+                choiceBox.setValue(null);
+
+            }
+
+
+        }
+
+
+
+}
+
+
 
