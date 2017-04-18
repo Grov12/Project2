@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,6 +18,8 @@ import java.util.ResourceBundle;
  * Created by robin on 2017-04-09.
  */
 public class ControllerPlayer implements Initializable {
+    @FXML
+    private TextArea playerTextArea;
 
 
 
@@ -51,7 +54,29 @@ public class ControllerPlayer implements Initializable {
                 }catch (Exception e) {
 
                 }
-            }
+    }
+    @FXML
+    private void teamButton(ActionEvent ae){
+        //Add new code later
+        playerTextArea.setText("Players in team");
+    }
+    @FXML
+    private void matcheButton(ActionEvent ae){
+        //Add new code later
+        playerTextArea.setText("Upcomeing matches");
+    }
+    @FXML
+    private void statisticButton(ActionEvent ae){
+        //Add new code later
+        playerTextArea.setText("Player and match statistics");
+    }
+    @FXML
+    private void trainingButton(ActionEvent ae){
+        //Add new scene?
+    }
+
+
+
         }
 
 

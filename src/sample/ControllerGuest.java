@@ -7,6 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,7 +22,14 @@ import java.util.ResourceBundle;
 public class ControllerGuest implements Initializable {
 
 
+    @FXML
+    private TextArea guestTextArea;
+
+
+
+
     public void initialize(URL location, ResourceBundle resources) {
+
     }
 
     @FXML
@@ -38,4 +48,21 @@ public class ControllerGuest implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+    @FXML
+    private void matchButton(ActionEvent ae){
+        //lägg till kod när vi har connectat till databas.
+        guestTextArea.setText("previous and upcomeing matches.");
+
+    }
+    @FXML
+    private void teamButton(ActionEvent ae){
+        //lägg till kod när vi har connectat till databas.
+        guestTextArea.setText("Names of players.");
+    }
+    @FXML
+    private void statisticButton(ActionEvent ae){
+        //lägg till kod när vi har connectat till databas.
+        guestTextArea.setText("Player and match statistics.");
+    }
+
 }
