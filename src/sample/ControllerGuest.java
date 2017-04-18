@@ -25,10 +25,15 @@ public class ControllerGuest implements Initializable {
     @FXML
     private TextArea guestTextArea;
 
+    @FXML private ChoiceBox choiceBox;
 
 
 
     public void initialize(URL location, ResourceBundle resources) {
+        choiceBox.getItems().add("View Team");
+        choiceBox.getItems().add("View Matches");
+        choiceBox.getItems().add("View Statistics");
+
 
     }
 
@@ -48,6 +53,7 @@ public class ControllerGuest implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+    /*
     @FXML
     private void matchButton(ActionEvent ae){
         //lägg till kod när vi har connectat till databas.
@@ -63,6 +69,15 @@ public class ControllerGuest implements Initializable {
     private void statisticButton(ActionEvent ae){
         //lägg till kod när vi har connectat till databas.
         guestTextArea.setText("Player and match statistics.");
+    }*/
+
+    public void menuOptions() {
+
+        if (choiceBox.getValue().equals("View Team")) {
+            //
+        }
+
+
     }
 
 }
