@@ -63,7 +63,7 @@ public class ControllerPlayer implements Initializable {
     @FXML
     private void matcheButton(ActionEvent ae){
         //Add new code later
-        playerTextArea.setText("Upcomeing matches");
+        playerTextArea.setText("Upcoming matches");
     }
     @FXML
     private void statisticButton(ActionEvent ae){
