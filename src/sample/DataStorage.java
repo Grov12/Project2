@@ -7,11 +7,11 @@ import java.util.ArrayList;
  */
 public class DataStorage {
 
-   // public ArrayList<Player> playerList;
-    //public ArrayList<Match> matchList;
-    //public ArrayList<Training> trainingList;
-   // public ArrayList<Coach> coachList;
-   // public ArrayList<Team> teamList; //
+    private ArrayList<Player> playerList;
+    private ArrayList<Match> matchList;
+    private ArrayList<Training> trainingList;
+    private ArrayList<Coach> coachList;
+    private ArrayList<Team> teamList;
 
     private static DataStorage instance;
 
@@ -23,10 +23,30 @@ public class DataStorage {
     }
 
     private DataStorage() {
-       // playerList = new ArrayList<Player>();
-        //matchList = new ArrayList<Match>();
-        //trainingList = new ArrayList<Training>();
-        //coachList = new ArrayList<Coach>();
-        //teamList = new Arraylist<Team>();
+        playerList = new ArrayList<Player>();
+        matchList = new ArrayList<Match>();
+        trainingList = new ArrayList<Training>();
+        coachList = new ArrayList<Coach>();
+        teamList = new ArrayList<Team>();
+    }
+
+    public ArrayList<Player> getPlayerList() {
+        return playerList;
+    }
+
+    public ArrayList<Match> getMatchList() {
+        return matchList;
+    }
+
+    public ArrayList<Training> getTrainingList() {
+        return trainingList;
+    }
+
+    public ArrayList<Coach> getCoachList() {
+        return coachList;
+    }
+
+    public ArrayList<Team> getTeamList() {
+        return teamList;
     }
 }
