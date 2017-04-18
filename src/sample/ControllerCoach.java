@@ -20,7 +20,6 @@ public class ControllerCoach implements Initializable {
 
 
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 
     @FXML

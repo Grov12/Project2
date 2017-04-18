@@ -42,5 +42,21 @@ public class DBHandler {
             e.printStackTrace();
         }
     }
+    public void addPlayerToDB (String name, String surName,String position, String teamName,String userName, String password ){
 
+        try(Connection conn = DriverManager.getConnection(connectionURL)){
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO `player` (Firstname,Surname,Playerposition,team_name,Password) VALUE (?,?,?,?,?)");
+            pstmt.setString(1, name );
+            pstmt.setString(2, surName);
+            pstmt.setString(3, position);
+            pstmt.setString(4, teamName);
+            pstmt.setString(5, password );
+            pstmt.executeUpdate();
+
+
+    } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
