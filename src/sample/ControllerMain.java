@@ -128,17 +128,7 @@ public class ControllerMain implements Initializable {
     }
 
 
-    public void viewPlayers() {
-    }
 
-    public void viewTeam() {
-    }
-
-    public void viewStatistics() {
-    }
-
-    public void viewMatches() {
-    }
 
     @FXML
     public void throwExceptions() {

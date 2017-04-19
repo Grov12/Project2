@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 /**
  * Created by robin on 2017-04-09.
  */
-public class ControllerPlayer implements Initializable {
+public class ControllerPlayer extends ControllerGuest implements Initializable {
     @FXML
     private TextArea playerTextArea;
 
@@ -49,7 +49,7 @@ public class ControllerPlayer implements Initializable {
     public void playerview() {
                 try {
                     ControllerMain main = new ControllerMain();
-                    main.viewPlayers();
+                    ControllerGuest.viewPlayers();
 
                 }catch (Exception e) {
 
