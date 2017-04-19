@@ -27,11 +27,14 @@ public class ControllerMain implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         choiceBox.getItems().add("Guest");
         choiceBox.getItems().add("Coach");
         choiceBox.getItems().add("Player");
         DBHandler dbHandler = new DBHandler();
         System.out.println("Boom");
+
+
 
 
     }
@@ -41,7 +44,7 @@ public class ControllerMain implements Initializable {
 
         if (choiceBox.getValue().equals("Coach")) {
             try {
-                throwExceptions();
+                 //throwExceptionsCoach();
                 Node node = (Node) ae.getSource();
                 Stage stage = (Stage) node.getScene().getWindow();
                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("CoachScene.fxml"));
@@ -55,7 +58,7 @@ public class ControllerMain implements Initializable {
                 Alert dialog = new Alert(Alert.AlertType.INFORMATION);
                 dialog.setTitle("Error");
                 dialog.setHeaderText("Error:");
-                dialog.setContentText("Both fields must be filled in!");
+                dialog.setContentText("Sorry, incorrest password or username");
                 dialog.showAndWait();
 
             }
@@ -66,7 +69,7 @@ public class ControllerMain implements Initializable {
 
         } else if (choiceBox.getValue().equals("Player")) {
             try {
-                throwExceptions();
+
                 Node node = (Node) ae.getSource();
                 Stage stage = (Stage) node.getScene().getWindow();
                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("PlayerScene.fxml"));
@@ -87,12 +90,6 @@ public class ControllerMain implements Initializable {
             } catch (Exception e) {
                e.printStackTrace();
             }
-
-
-
-
-
-
 
 
         }  if (choiceBox.getValue().equals("Guest")) {
@@ -130,18 +127,23 @@ public class ControllerMain implements Initializable {
 
 
 
-    @FXML
-    public void throwExceptions() {
-        if (textPassword.getText().isEmpty() && textUsername.getText().isEmpty()) {
-            throw new NullPointerException("Not possible");
+   // @FXML
+   // public void throwExceptionsCoach() {
+     //   DBHandler dbHandler = new DBHandler();
+     //   boolean tempo = dbHandler.handleLoginCoach(textUsername.getText(),textPassword.getText());
+      //  if(tempo == false) {
 
+          // throw new NullPointerException();
+      //  }
+      //  else {
+        //    System.out.println("hi");
         }
 
+   // } //
 
-    }
 
 
-    }
+
 
 
 

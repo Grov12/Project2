@@ -96,6 +96,32 @@ public class DBHandler {
         }
 
     }
+    public boolean handleLoginCoach(String userName, String password) {
+        boolean result = false;
+        try(Connection conn = DriverManager.getConnection(connectionURL)) {
+            Statement pstm = conn.createStatement();
+            ResultSet rs=pstm.executeQuery("SELECT * FROM coach where Username='" + userName + "'and Password='" + password + "'");
+           if(rs.next()) {
+               String checkUser = rs.getString(1);
+               String checkPass = rs.getString(2);
+
+
+               if (checkUser.equals(userName) && checkPass.equals(password)) {
+                   result = true;
+                   System.out.println(result);
+               } else {
+                   result = false;
+                   System.out.println(result);
+               }
+
+           }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 
 
 
