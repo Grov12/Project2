@@ -25,12 +25,16 @@ public class ControllerMain implements Initializable {
     private TextField textPassword;
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         choiceBox.getItems().add("Guest");
         choiceBox.getItems().add("Coach");
         choiceBox.getItems().add("Player");
+        DBHandler dbHandler = new DBHandler();
+        dbHandler.deletePlayerFromDB(8);
+        System.out.println("Boom");
+
+
     }
 
     @FXML
@@ -141,6 +145,7 @@ public class ControllerMain implements Initializable {
     public void throwExceptions() {
         if (textPassword.getText().isEmpty() && textUsername.getText().isEmpty()) {
             throw new NullPointerException("Not possible");
+
         }
 
 
