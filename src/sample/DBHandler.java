@@ -1,12 +1,7 @@
 package sample;
 
-import com.mysql.jdbc.*;
-
 import java.io.FileInputStream;
 import java.sql.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.util.Properties;
 
 
@@ -73,7 +68,44 @@ public class DBHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }}
+    }
+
+    public void addMatchToDB(String date, String opponent){
+        try(Connection conn = DriverManager.getConnection(connectionURL)){
+            PreparedStatement pstm = conn.prepareStatement("INSERT INTO `match` (Date,Opponents) VALUE (?,?)");
+            pstm.setString(1, date);
+            pstm.setString(2, opponent);
+            pstm.executeUpdate();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void removeMatchFromDB (int id){
+
+        try(Connection conn = DriverManager.getConnection(connectionURL)){
+            PreparedStatement pstm = conn.prepareStatement("DELETE FROM `match` WHERE `MatchID` = ?");
+            pstm.setInt(1, id);
+            pstm.executeUpdate();
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+
+    }
+
+
+
+
+
 
 
 
