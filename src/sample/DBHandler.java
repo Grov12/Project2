@@ -26,51 +26,54 @@ public class DBHandler {
 
     private Properties loadProperties() {
         Properties appProp = new Properties();
-        try(FileInputStream fis = new FileInputStream("DB.properties")) {
+        try (FileInputStream fis = new FileInputStream("DB.properties")) {
             appProp.load(fis);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return  appProp;
+        return appProp;
     }
 
 
-    public void printAll(){
-        try(Connection conn = DriverManager.getConnection(connectionURL)){
+    public void printAll() {
+        try (Connection conn = DriverManager.getConnection(connectionURL)) {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM team");
 
-            while (rs.next()){
+            while (rs.next()) {
                 System.out.printf("%s%n", rs.getString("Name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    public void addPlayerToDB (String name, String surName,String position, String teamName,String userName, String password ){
 
-        try(Connection conn = DriverManager.getConnection(connectionURL)){
+    public void addPlayerToDB(String name, String surName, String position, String teamName, String userName, String password) {
+
+        try (Connection conn = DriverManager.getConnection(connectionURL)) {
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO `player` (Firstname,Surname,Playerposition,team_name,Password) VALUE (?,?,?,?,?)");
-            pstmt.setString(1, name );
+            pstmt.setString(1, name);
             pstmt.setString(2, surName);
             pstmt.setString(3, position);
             pstmt.setString(4, teamName);
-            pstmt.setString(5, password );
+            pstmt.setString(5, password);
             pstmt.executeUpdate();
 
 
-    } catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     public void deletePlayerFromDB(int index) {
-        try(Connection conn = DriverManager.getConnection(connectionURL)) {
+        try (Connection conn = DriverManager.getConnection(connectionURL)) {
             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM player WHERE PlayerID=" + index);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-}
+    }}
+
+
 
