@@ -1,6 +1,6 @@
 package sample;
 
-import com.mysql.jdbc.*;
+
 
 import java.io.FileInputStream;
 import java.sql.*;

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
@@ -8,12 +9,11 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerPlayer">
    <children>
       <Text layoutX="260.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Scene" />
-      <Button layoutX="471.0" layoutY="322.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="81.0" text="Continue" />
+      <Button layoutX="471.0" layoutY="323.0" mnemonicParsing="false" onAction="#absence" prefHeight="27.0" prefWidth="81.0" text="Absence" />
       <Button layoutX="49.0" layoutY="323.0" mnemonicParsing="false" onAction="#playerLogout" prefHeight="17.0" prefWidth="80.0" text="Logout" />
       <TextArea fx:id="playerTextArea" layoutX="207.0" layoutY="150.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button fx:id="trainingButton" layoutX="77.0" layoutY="87.0" mnemonicParsing="false" text="Training" />
-      <Button fx:id="matchButton" layoutX="155.0" layoutY="87.0" mnemonicParsing="false" onAction="#matcheButton" text="View Matches" />
-      <Button fx:id="teamButton" layoutX="270.0" layoutY="87.0" mnemonicParsing="false" onAction="#teamButton" text="View Team" />
-      <Button fx:id="statisticButton" layoutX="380.0" layoutY="87.0" mnemonicParsing="false" onAction="#statisticButton" text="View Statistics" />
+      <ChoiceBox fx:id="choiceBoxView" layoutX="240.0" layoutY="62.0" prefHeight="27.0" prefWidth="119.0" />
+      <Button layoutX="283.0" layoutY="103.0" mnemonicParsing="false" onAction="#viewBoxPlayer" text="View" />
+      <Button layoutX="471.0" layoutY="278.0" mnemonicParsing="false" onAction="#attendTraining" prefHeight="27.0" prefWidth="81.0" text="Attend" />
    </children>
 </AnchorPane>
