@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 /**
  * Created by robin on 2017-04-09.
  */
-public class ControllerGuest implements Initializable {
+public class ControllerGuest extends ControllerMain implements Initializable {
 
 
     @FXML
@@ -32,7 +32,9 @@ public class ControllerGuest implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         choiceBox.getItems().add("View Team");
         choiceBox.getItems().add("View Matches");
-        choiceBox.getItems().add("View Statistics");
+        choiceBox.getItems().add("View Players");
+        choiceBox.getItems().add("View Player Statistics");
+        choiceBox.getItems().add("View Match Statistics");
 
 
     }
@@ -53,6 +55,7 @@ public class ControllerGuest implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
     /*
     @FXML
     private void matchButton(ActionEvent ae){
@@ -74,10 +77,43 @@ public class ControllerGuest implements Initializable {
     public void menuOptions() {
 
         if (choiceBox.getValue().equals("View Team")) {
-            //
+            viewTeam();
         }
 
+        if (choiceBox.getValue().equals("View Matches")){
+            viewMatches();
+        }
+
+        if (choiceBox.getValue().equals("View Players")){
+            viewPlayers();
+        }
+
+        if (choiceBox.getValue().equals("View Player Statistics")){
+            viewPlayerStatistics();
+        }
+
+        if (choiceBox.getValue().equals("View Match Statistics")){
+            viewMatchStatistics();
+        }
 
     }
+
+
+    public static void viewTeam() {
+    }
+
+    public static void viewMatches() {
+    }
+
+    public static void viewPlayers() {
+    }
+
+    public static void viewPlayerStatistics() {
+    }
+
+    public static void viewMatchStatistics(){
+    }
+
+
 
 }
