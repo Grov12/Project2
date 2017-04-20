@@ -122,6 +122,20 @@ public class DBHandler {
         }
         return result;
     }
+    public void viewTrainingDB() {
+        try(Connection connection = DriverManager.getConnection(connectionURL)) {
+            Statement statement = connection.createStatement();
+            ResultSet rs=statement.executeQuery("SELECT * FROM training");
+            while(rs.next()) {
+                System.out.println(rs.getString("TrainingID"));
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 

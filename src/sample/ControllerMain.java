@@ -32,12 +32,6 @@ public class ControllerMain implements Initializable {
         choiceBox.getItems().add("Coach");
         choiceBox.getItems().add("Player");
 
-        //DBHandler dbHandler = new DBHandler();
-        //dbHandler.deletePlayerFromDB(8);
-
-        DBHandler dbHandler = new DBHandler();
-        System.out.println("Boom");
-
 
 
 
