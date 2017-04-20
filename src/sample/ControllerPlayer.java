@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,8 +22,7 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
     @FXML
     private TextArea playerTextArea;
 
-    @FXML
-    private ChoiceBox choiceBoxAttend;
+
     @FXML
     private ChoiceBox choiceBoxView; //Choicebox for View functions in Player Scene
 
@@ -40,10 +40,12 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        choiceBoxView.getItems().add("View Matches");
-        choiceBoxView.getItems().add("View Team");
-        choiceBoxView.getItems().add("View Training");
-        choiceBoxView.getItems().add("View Statistics");
+       // choiceBoxView.getItems().add("View Matches");
+       // choiceBoxView.getItems().add("View Team");
+       // choiceBoxView.getItems().add("View Training");
+       // choiceBoxView.getItems().add("View Statistics");
+
+        //Choicebox Doesn't work with many FXML-files with the same Controller. 
 
 
     }
@@ -66,21 +68,24 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
 
     }
 
-    //public void playerview() {
+    public void playerview() {
 
-        //try {
-          //  ControllerMain main = new ControllerMain();
+        try {
+            ControllerMain main = new ControllerMain();
             //main.viewPlayers();
+        } catch (Exception e){
 
-           // try {
-               // ControllerMain main = new ControllerMain();
-                //ControllerGuest.viewPlayers();
+        }
+
+        try {
+            ControllerMain main = new ControllerMain();
+            ControllerGuest.viewPlayers();
 
 
-           // } catch (Exception e) {
+        } catch (Exception e) {
 
-            //}
-
+        }
+    }
 
 
         @FXML
@@ -108,7 +113,7 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
 
 
         @FXML
-        private void attendTraining(ActionEvent ae){
+        private void attendTraining (ActionEvent ae){
 
 
             Node node = (Node) ae.getSource();
@@ -148,7 +153,8 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
 
         @FXML
         private void saveAbsenceData () {
-
+            //Method to Report Abscene
+            //TODO
 
 
         }
@@ -156,11 +162,17 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
 
         @FXML
         private void saveAttendTraining () {
+            //Method to Attend Training
+            //TODO
 
 
         }
+
     }
-}
+
+
+
+
 
 
 

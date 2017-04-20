@@ -1,10 +1,6 @@
 package sample;
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> bae0b6e6eabf970b28b1725a921a4325b39432a9
 import java.io.FileInputStream;
 import java.sql.*;
 import java.util.Properties;
