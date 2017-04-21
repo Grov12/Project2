@@ -3,22 +3,27 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.InputMismatchException;
+import java.util.ResourceBundle;
 
 /**
  * Created by Daniel on 2017-04-19.
  */
-public class ControllerManageTeam {
+public class ControllerManageTeam implements Initializable {
 
+    @FXML private TextArea playersInTheTeamTextArea;
     @FXML private TextField addPlayerIDTextField;
     @FXML private TextField removePlayerIDTextField;
     @FXML private TextField firstNameTextField;
@@ -91,4 +96,9 @@ public class ControllerManageTeam {
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        playersInTheTeamTextArea.setText("");
+        // Set the text to all the players in the team.
+    }
 }
