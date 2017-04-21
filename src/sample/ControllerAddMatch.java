@@ -24,7 +24,7 @@ public class ControllerAddMatch {
     @FXML private Button backButton;
     @FXML private Button addMatchButton;
 
-
+    @FXML
     private void buttonPressed(ActionEvent ae){
 
         Button source = (Button) ae.getSource();
