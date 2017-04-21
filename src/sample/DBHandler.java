@@ -137,6 +137,66 @@ public class DBHandler {
         }
     }
 
+    public void viewMatchDB() {
+        try(Connection connection = DriverManager.getConnection(connectionURL)) {
+            Statement statement = connection.createStatement();
+            ResultSet rs=statement.executeQuery("SELECT * FROM match");
+            while(rs.next()) {
+                System.out.println(rs.getString("MatchID"));
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void viewPlayerStatisticsDB() {
+        try(Connection connection = DriverManager.getConnection(connectionURL)) {
+            Statement statement = connection.createStatement();
+            ResultSet rs=statement.executeQuery("SELECT * FROM player "); //Implement the correct table
+            while(rs.next()) {
+                System.out.println(rs.getString("PlayerID"));
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void viewMatchStatisticsDB() {
+        try(Connection connection = DriverManager.getConnection(connectionURL)) {
+            Statement statement = connection.createStatement();
+            ResultSet rs=statement.executeQuery("SELECT * FROM match"); //Implement the correct table
+            while(rs.next()) {
+                System.out.println(rs.getString("MatchID"));
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void viewPlayersDB() {
+        try(Connection connection = DriverManager.getConnection(connectionURL)) {
+            Statement statement = connection.createStatement();
+            ResultSet rs=statement.executeQuery("SELECT * FROM player"); //Implement the correct table
+            while(rs.next()) {
+                System.out.println(rs.getString("PlayerID"));
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 

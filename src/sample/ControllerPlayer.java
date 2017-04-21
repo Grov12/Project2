@@ -38,14 +38,12 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //choiceBoxView.getItems().add("View Matches");
+        //choiceBoxView.getItems().add("View Team");
+        //choiceBoxView.getItems().add("View Training");
+        //choiceBoxView.getItems().add("View Statistics");
 
-
-       // choiceBoxView.getItems().add("View Matches");
-       // choiceBoxView.getItems().add("View Team");
-       // choiceBoxView.getItems().add("View Training");
-       // choiceBoxView.getItems().add("View Statistics");
-
-        //Choicebox Doesn't work with many FXML-files with the same Controller. 
+        //Choicebox Doesn't work with many FXML-files with the same Controller.
 
 
     }
@@ -67,26 +65,6 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
         stage.setScene(scene);
 
     }
-
-    public void playerview() {
-
-        try {
-            ControllerMain main = new ControllerMain();
-            //main.viewPlayers();
-        } catch (Exception e){
-
-        }
-
-        try {
-            ControllerMain main = new ControllerMain();
-            ControllerGuest.viewPlayers();
-
-
-        } catch (Exception e) {
-
-        }
-    }
-
 
         @FXML
         private void trainingButton (ActionEvent ae){
@@ -114,14 +92,12 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
 
         @FXML
         private void attendTraining (ActionEvent ae){
-
-
             Node node = (Node) ae.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayerSceneAttend.fxml"));
             Parent root = null;
             try {
-                root = loader.load();
+                root = (Parent) loader.load();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -132,7 +108,7 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
 
 
         @FXML
-        private void absence (ActionEvent ae){
+        public void absence (ActionEvent ae){
 
             try {
 

@@ -28,7 +28,7 @@ public class ControllerCoach extends ControllerPlayer implements Initializable {
     @FXML private Button manageTeamButton;
 
     public void initialize(URL location, ResourceBundle resources) {
-        choiceBox.getItems().add("View Team");
+       choiceBox.getItems().add("View Team");
         choiceBox.getItems().add("View Matches");
         choiceBox.getItems().add("View Players");
         choiceBox.getItems().add("View Player Statistics");
