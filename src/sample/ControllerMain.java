@@ -28,6 +28,8 @@ public class ControllerMain implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
+
         choiceBox.getItems().add("Guest");
         choiceBox.getItems().add("Coach");
         choiceBox.getItems().add("Player");

@@ -181,19 +181,22 @@ public class DBHandler {
         }
     }
 
-    public void viewPlayersDB() {
+    public String viewPlayersDB() {
+        String s = null;
         try(Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
             ResultSet rs=statement.executeQuery("SELECT * FROM player"); //Implement the correct table
             while(rs.next()) {
-                System.out.println(rs.getString("PlayerID"));
+                String s1 = rs.getString("Surname");
+                String s2 = rs.getString("Firstname");
+                s = s1 + s2;
+
 
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return s;
     }
 
 

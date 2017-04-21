@@ -106,8 +106,9 @@ public class ControllerCoach extends ControllerPlayer implements Initializable {
 
     public void menuOptions() {
 
-        if (choiceBox.getValue().equals("View Team")) {
+        if(choiceBox.getValue().equals("View Team")) {
             viewTeam();
+
         }
 
         if (choiceBox.getValue().equals("View Matches")){
@@ -115,7 +116,8 @@ public class ControllerCoach extends ControllerPlayer implements Initializable {
         }
 
         if (choiceBox.getValue().equals("View Players")){
-            viewPlayers();
+            DBHandler dbHandler = new DBHandler();
+            coachTextArea.setText(dbHandler.viewPlayersDB());
         }
 
         if (choiceBox.getValue().equals("View Player Statistics")){
