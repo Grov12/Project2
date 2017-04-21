@@ -5,11 +5,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerAddMatch">
    <children>
-      <Button fx:id="backButton" layoutX="176.0" layoutY="255.0" mnemonicParsing="false" text="Back to menu" />
-      <Button fx:id="addMatchButton" layoutX="311.0" layoutY="255.0" mnemonicParsing="false" text="Add Match" />
+      <Button fx:id="backButton" layoutX="176.0" layoutY="255.0" mnemonicParsing="false" onAction="#buttonPressed" text="Back to menu" />
+      <Button fx:id="addMatchButton" layoutX="311.0" layoutY="255.0" mnemonicParsing="false" onAction="#buttonPressed" text="Add Match" />
       <TextField fx:id="opponentTextField" layoutX="235.0" layoutY="119.0" />
       <TextField fx:id="dateTextField" layoutX="235.0" layoutY="158.0" />
       <TextField fx:id="resultTextField" layoutX="237.0" layoutY="200.0" />

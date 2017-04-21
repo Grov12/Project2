@@ -54,6 +54,7 @@ public class ControllerCoach extends ControllerPlayer implements Initializable {
         stage.setScene(scene);
     }
 
+    @FXML
     private void coachButtonPressed(ActionEvent ae){
 
         Button source = (Button) ae.getSource();
