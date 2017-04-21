@@ -29,6 +29,8 @@ public class ControllerGuest extends ControllerMain implements Initializable {
 
 
 
+
+
     public void initialize(URL location, ResourceBundle resources) {
         choiceBox.getItems().add("View Team");
         choiceBox.getItems().add("View Matches");
@@ -100,18 +102,29 @@ public class ControllerGuest extends ControllerMain implements Initializable {
 
 
     public static void viewTeam() {
+        DBHandler dbView = new DBHandler();
+        dbView.viewTrainingDB();
     }
 
     public static void viewMatches() {
+        DBHandler dbView = new DBHandler();
+        dbView.viewMatchDB();
     }
 
     public static void viewPlayers() {
+        DBHandler dbView = new DBHandler();
+        dbView.viewPlayersDB();
+
     }
 
     public static void viewPlayerStatistics() {
+        DBHandler dbView = new DBHandler();
+        dbView.viewPlayerStatisticsDB();
     }
 
     public static void viewMatchStatistics(){
+        DBHandler dbView = new DBHandler();
+        dbView.viewMatchStatisticsDB();
     }
 
 

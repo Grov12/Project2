@@ -36,6 +36,7 @@ public class ControllerManageTeam implements Initializable {
     @FXML private Button backButton;
 
 
+    @FXML
     private void buttonPressed(ActionEvent ae){
 
         Button source = (Button) ae.getSource();

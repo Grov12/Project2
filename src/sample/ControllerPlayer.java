@@ -43,7 +43,7 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
         //choiceBoxView.getItems().add("View Training");
         //choiceBoxView.getItems().add("View Statistics");
 
-        //Choicebox Doesn't work with many FXML-files with the same Controller. 
+        //Choicebox Doesn't work with many FXML-files with the same Controller.
 
 
     }
