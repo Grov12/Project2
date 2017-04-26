@@ -37,7 +37,7 @@ public class ControllerGuest extends ControllerMain implements Initializable {
         choiceBox.getItems().add("View Players");
         choiceBox.getItems().add("View Player Statistics");
         choiceBox.getItems().add("View Match Statistics");
-
+        choiceBox.getItems().add("View Training");
 
     }
 
@@ -98,12 +98,16 @@ public class ControllerGuest extends ControllerMain implements Initializable {
             viewMatchStatistics();
         }
 
+        if (choiceBox.getValue().equals("View Training")){
+
+        }
+
     }
 
 
     public static void viewTeam() {
         DBHandler dbView = new DBHandler();
-        dbView.viewTrainingDB();
+        dbView.viewTeamDB();
     }
 
     public static void viewMatches() {
@@ -125,6 +129,12 @@ public class ControllerGuest extends ControllerMain implements Initializable {
     public static void viewMatchStatistics(){
         DBHandler dbView = new DBHandler();
         dbView.viewMatchStatisticsDB();
+    }
+
+    public static void viewTraining(){
+        DBHandler dbView = new DBHandler();
+        dbView.viewTrainingDB();
+
     }
 
 

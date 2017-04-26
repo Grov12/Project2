@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerPlayer">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerReportAbsence">
    <children>
       <Text layoutX="211.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report Abscene Training" />
       <Button layoutX="471.0" layoutY="322.0" mnemonicParsing="false" onAction="#saveAbsenceData" prefHeight="28.0" prefWidth="81.0" text="Save" />

@@ -198,6 +198,20 @@ public class DBHandler {
         }
         return s;
     }
+    public void viewTeamDB() {
+        try(Connection connection = DriverManager.getConnection(connectionURL)) {
+            Statement statement = connection.createStatement();
+            ResultSet rs=statement.executeQuery("SELECT * FROM match"); //Implement the correct table
+            while(rs.next()) {
+                System.out.println(rs.getString("CoachUsername"));
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
