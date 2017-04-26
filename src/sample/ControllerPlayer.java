@@ -77,8 +77,7 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
             }
 
             if (choiceBoxView.getValue().equals("View Players")){
-                DBHandler dbHandler = new DBHandler();
-                playerTextArea.setText(dbHandler.viewPlayersDB());
+                viewPlayers();
             }
 
             if (choiceBoxView.getValue().equals("View Player Statistics")){
