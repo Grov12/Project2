@@ -4,6 +4,7 @@ package sample;
 import java.io.FileInputStream;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Properties;
 
 
@@ -192,16 +193,19 @@ public class DBHandler {
             while(rs.next()) {
                 String s1 = rs.getString("Surname");
                 String s2 = rs.getString("Firstname");
-                s = s1 + s2;
+                s = s1 + " " + s2 + "\n";
 
                 playerList.add(s);
+
+                String list = Arrays.toString(playerList.toArray());
+
 
 
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return (playerList);
+        return playerList;
     }
 
 
