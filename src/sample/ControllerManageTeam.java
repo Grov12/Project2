@@ -81,11 +81,10 @@ public class ControllerManageTeam implements Initializable {
             int playerID = DataStorage.getInstance().getPlayerList().size() + 1;
             String firstname = firstNameTextField.getText();
             String surname = surNameTextField.getText();
-            Player.Position position = Player.Position.valueOf(positionTextField.getText().toUpperCase());
+            String position = String.valueOf(Player.Position.valueOf(positionTextField.getText().toUpperCase()));
             String username = userNameTextField.getText();
             String password = passwordTextField.getText();
 
-            //addPlayerToDB(playerID, firstname, surname, position, username, password);
 
         } catch (NullPointerException ex){
             Alert dialog = new Alert(Alert.AlertType.ERROR);

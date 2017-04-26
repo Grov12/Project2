@@ -117,7 +117,7 @@ public class ControllerCoach extends ControllerPlayer implements Initializable {
 
         if (choiceBox.getValue().equals("View Players")){
             DBHandler dbHandler = new DBHandler();
-            coachTextArea.setText(dbHandler.viewPlayersDB());
+            coachTextArea.setText(String.valueOf(dbHandler.viewPlayersDB().toString().replace("[","").replace("]", "")).replace(",", ""));
         }
 
         if (choiceBox.getValue().equals("View Player Statistics")){
