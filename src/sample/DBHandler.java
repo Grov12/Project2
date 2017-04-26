@@ -3,6 +3,7 @@ package sample;
 
 import java.io.FileInputStream;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Properties;
 
 
@@ -44,15 +45,16 @@ public class DBHandler {
         }
     }
 
-    public void addPlayerToDB(String name, String surName, String position, String teamName, String userName, String password) {
+    public void addPlayerToDB(int playerID, String name, String surName, String position, String teamName, String userName, String password) {
 
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO `player` (Firstname,Surname,Playerposition,team_name,Password) VALUE (?,?,?,?,?)");
-            pstmt.setString(1, name);
-            pstmt.setString(2, surName);
-            pstmt.setString(3, position);
-            pstmt.setString(4, teamName);
-            pstmt.setString(5, password);
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO `player` (PlayerID, Firstname,Surname,Playerposition,team_name,Password) VALUE (?,?,?,?,?)");
+            pstmt.setInt(1, playerID);
+            pstmt.setString(2, name);
+            pstmt.setString(3, surName);
+            pstmt.setString(4, position);
+            pstmt.setString(5, teamName);
+            pstmt.setString(6, password);
             pstmt.executeUpdate();
 
 
@@ -181,7 +183,8 @@ public class DBHandler {
         }
     }
 
-    public String viewPlayersDB() {
+    public ArrayList<String> viewPlayersDB() {
+        ArrayList<String> playerList = new ArrayList<>();
         String s = null;
         try(Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
@@ -191,20 +194,19 @@ public class DBHandler {
                 String s2 = rs.getString("Firstname");
                 s = s1 + s2;
 
+                playerList.add(s);
+
 
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return s;
+        return (playerList);
     }
 
 
 
-
-
-
-    }
+}
 
 
 
