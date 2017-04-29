@@ -39,6 +39,7 @@ public class ControllerGuest extends ControllerMain implements Initializable {
         choiceBox.getItems().add("View Match Statistics");
         choiceBox.getItems().add("View Training");
 
+
     }
 
     @FXML
@@ -87,6 +88,7 @@ public class ControllerGuest extends ControllerMain implements Initializable {
         }
 
         if (choiceBox.getValue().equals("View Players")){
+            viewPlayers(guestTextArea);
 
         }
 
@@ -107,12 +109,12 @@ public class ControllerGuest extends ControllerMain implements Initializable {
 
     public static void viewTeam() {
         DBHandler dbView = new DBHandler();
-<<<<<<< HEAD
+
         dbView.viewTrainingDB();
 
-=======
+
         dbView.viewTeamDB();
->>>>>>> f8085f62838a5e0667a2ce1cd52850d7d4306f38
+
     }
 
     public static void viewMatches() {
@@ -120,9 +122,14 @@ public class ControllerGuest extends ControllerMain implements Initializable {
         dbView.viewMatchDB();
     }
 
-    public static void viewPlayers() {
-        DBHandler dbView = new DBHandler();
-        dbView.viewPlayersDB();
+    public static void viewPlayers(TextArea tx) {
+        try {
+            DBHandler dbView = new DBHandler();
+            tx.setText(String.valueOf(dbView.viewPlayersDB()).toString().replace("[", "").replace("]", "").replace(",", ""));
+        }catch (Exception e) {
+            System.out.println("Something went wrong");
+        }
+
 
 
     }

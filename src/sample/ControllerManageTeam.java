@@ -85,6 +85,8 @@ public class ControllerManageTeam implements Initializable {
             String username = userNameTextField.getText();
             String password = passwordTextField.getText();
 
+            DBHandler dbHandler = new DBHandler();
+
 
         } catch (NullPointerException ex){
             Alert dialog = new Alert(Alert.AlertType.ERROR);

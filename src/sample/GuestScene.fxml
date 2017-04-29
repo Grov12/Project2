@@ -13,5 +13,6 @@
       <Button layoutX="42.0" layoutY="323.0" mnemonicParsing="false" onAction="#guestLogout" prefHeight="28.0" prefWidth="81.0" text="Logout" />
       <TextArea fx:id="guestTextArea" layoutX="200.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0" />
       <ChoiceBox fx:id="choiceBox" layoutX="218.0" layoutY="76.0" prefWidth="150.0" />
+      <Button layoutX="168.0" layoutY="76.0" mnemonicParsing="false" onAction="#menuOptions" prefHeight="25.0" prefWidth="43.0" text="OK" />
    </children>
 </AnchorPane>

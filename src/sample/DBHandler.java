@@ -46,16 +46,17 @@ public class DBHandler {
         }
     }
 
-    public void addPlayerToDB(int playerID, String name, String surName, String position, String teamName, String userName, String password) {
+    public void addPlayerToDB(int playerID, String name, String surName, String position, String userName, String password,String team) {
 
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO `player` (PlayerID, Firstname,Surname,Playerposition,team_name,Password) VALUE (?,?,?,?,?)");
-            pstmt.setInt(1, playerID);
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO `player` (PlayerID, Firstname,Surname,Playerposition,Username,team_name,Password) VALUE (?,?,?,?,?,?,?)");
+            pstmt.setInt(1,playerID);
             pstmt.setString(2, name);
             pstmt.setString(3, surName);
             pstmt.setString(4, position);
-            pstmt.setString(5, teamName);
-            pstmt.setString(6, password);
+            pstmt.setString(5, userName);
+            pstmt.setString(7, team);
+            pstmt.setString(6,password);
             pstmt.executeUpdate();
 
 

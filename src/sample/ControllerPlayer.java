@@ -77,7 +77,7 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
             }
 
             if (choiceBoxView.getValue().equals("View Players")){
-                viewPlayers();
+                viewPlayers(playerTextArea);
             }
 
             if (choiceBoxView.getValue().equals("View Player Statistics")){
