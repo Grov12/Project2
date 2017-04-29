@@ -194,12 +194,7 @@ public class DBHandler {
                 String s1 = rs.getString("Surname");
                 String s2 = rs.getString("Firstname");
                 s = s1 + " " + s2 + "\n";
-
                 playerList.add(s);
-
-                String list = Arrays.toString(playerList.toArray());
-
-
 
             }
         } catch (SQLException e) {

@@ -87,7 +87,7 @@ public class ControllerGuest extends ControllerMain implements Initializable {
         }
 
         if (choiceBox.getValue().equals("View Players")){
-            viewPlayers();
+
         }
 
         if (choiceBox.getValue().equals("View Player Statistics")){
@@ -104,6 +104,7 @@ public class ControllerGuest extends ControllerMain implements Initializable {
     public static void viewTeam() {
         DBHandler dbView = new DBHandler();
         dbView.viewTrainingDB();
+
     }
 
     public static void viewMatches() {
@@ -114,6 +115,7 @@ public class ControllerGuest extends ControllerMain implements Initializable {
     public static void viewPlayers() {
         DBHandler dbView = new DBHandler();
         dbView.viewPlayersDB();
+
 
     }
 
