@@ -26,24 +26,18 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
     @FXML
     private ChoiceBox choiceBoxView; //Choicebox for View functions in Player Scene
 
-    @FXML
-    private TextField textNameTraining; //Textfield for Firstname in Report Absence Scene
-    @FXML
-    private TextField textTrainingID;  //Textfield for Training ID in Report Absence Scene
-    @FXML
-    private TextField textNameAttend; //Textfield for Firstname in Attend Training Scene
-    @FXML
-    private TextField textMatchID; //Textfield for MatchID in Match Training Scene
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //choiceBoxView.getItems().add("View Matches");
-        //choiceBoxView.getItems().add("View Team");
-        //choiceBoxView.getItems().add("View Training");
-        //choiceBoxView.getItems().add("View Statistics");
+        choiceBoxView.getItems().add("View Team");
+        choiceBoxView.getItems().add("View Matches");
+        choiceBoxView.getItems().add("View Players");
+        choiceBoxView.getItems().add("View Player Statistics");
+        choiceBoxView.getItems().add("View Match Statistics");
+        choiceBoxView.getItems().add("View Training");
 
-        //Choicebox Doesn't work with many FXML-files with the same Controller.
+
 
 
     }
@@ -73,18 +67,31 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
 
         @FXML
         private void viewBoxPlayer (ActionEvent ae){
-            if (choiceBoxView.getValue().equals("View Matches")) {
-                playerTextArea.setText("Upcoming matches");
+            if(choiceBoxView.getValue().equals("View Team")) {
+                viewTeam();
 
             }
-            if (choiceBoxView.getValue().equals("View Training")) {
-                playerTextArea.setText("Upcoming training");
+
+            if (choiceBoxView.getValue().equals("View Matches")){
+                viewMatches();
             }
-            if (choiceBoxView.getValue().equals("View Team")) {
-                playerTextArea.setText("Players in team");
+
+            if (choiceBoxView.getValue().equals("View Players")){
+                viewPlayers();
             }
-            if (choiceBoxView.getValue().equals("View Statistics")) {
-                playerTextArea.setText("Vie Statistics");
+
+            if (choiceBoxView.getValue().equals("View Player Statistics")){
+                viewPlayerStatistics();
+            }
+
+            if (choiceBoxView.getValue().equals("View Match Statistics")){
+                viewMatchStatistics();
+            }
+
+            if (choiceBoxView.getValue().equals("View Training")){
+                viewTraining();
+
+
             }
 
         }
@@ -127,22 +134,8 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
 
         }
 
-        @FXML
-        private void saveAbsenceData () {
-            //Method to Report Abscene
-            //TODO
 
 
-        }
-
-
-        @FXML
-        private void saveAttendTraining () {
-            //Method to Attend Training
-            //TODO
-
-
-        }
 
     }
 

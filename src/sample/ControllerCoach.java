@@ -129,6 +129,8 @@ public class ControllerCoach extends ControllerPlayer implements Initializable {
         }
 
         if (choiceBox.getValue().equals("View Training")){
+            viewTraining();
+
 
         }
 
