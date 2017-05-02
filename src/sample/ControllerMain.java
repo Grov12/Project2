@@ -46,13 +46,7 @@ public class ControllerMain implements Initializable {
         if (choiceBox.getValue().equals("Coach")) {
             try {
                  //throwExceptionsCoach();
-                Node node = (Node) ae.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("CoachScene.fxml"));
-                Parent root = null;
-                root = (Parent) loader.load();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+            changeScene(ae,"CoachScene.fxml");
             } catch (IOException var7) {
                 var7.printStackTrace();
             } catch (NullPointerException e) {
@@ -61,24 +55,11 @@ public class ControllerMain implements Initializable {
                 dialog.setHeaderText("Error:");
                 dialog.setContentText("Sorry, incorrest password or username");
                 dialog.showAndWait();
-
             }
-
-
-
-
 
         } else if (choiceBox.getValue().equals("Player")) {
             try {
-
-                Node node = (Node) ae.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("PlayerScene.fxml"));
-                Parent root = null;
-                root = (Parent) loader.load();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-
+                changeScene(ae,"PlayerScene.fxml");
 
             } catch (IOException var7) {
                 var7.printStackTrace();
@@ -94,23 +75,16 @@ public class ControllerMain implements Initializable {
 
 
         }  if (choiceBox.getValue().equals("Guest")) {
-            Node node = (Node) ae.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("GuestScene.fxml"));
-
-            Parent root = null;
 
             try {
-                root = (Parent) loader.load();
+                changeScene(ae,"GuestScene.fxml");
             } catch (IOException var7) {
                 var7.printStackTrace();
             }catch (NullPointerException e) {
                 System.out.println("hi");
             }
 
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+
         }
     }
 
@@ -123,6 +97,16 @@ public class ControllerMain implements Initializable {
         }
 
 
+    }
+
+    //Method for changing scene
+    private void changeScene (ActionEvent event, String fxml) throws IOException{
+        Node node = (Node)event.getSource();
+        Stage stage = (Stage)node.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
 
