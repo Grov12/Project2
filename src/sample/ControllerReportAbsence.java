@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class ControllerReportAbsence implements Initializable {
+public class ControllerReportAbsence extends ControllerMain implements Initializable {
 
     @FXML
     private TextField textNameTraining;
@@ -29,19 +29,13 @@ public class ControllerReportAbsence implements Initializable {
     }
     @FXML
     private void playerLogout(ActionEvent ae) {
-        Node node = (Node)ae.getSource();
-        Stage stage = (Stage)node.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("PlayerScene.fxml"));
-        Parent root = null;
 
         try {
-            root = (Parent)loader.load();
+          changeScene(ae,"PlayerScene.fxml");
         } catch (IOException var7) {
             var7.printStackTrace();
         }
 
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
     }
 
     @FXML

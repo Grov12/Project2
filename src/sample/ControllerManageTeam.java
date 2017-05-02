@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Daniel on 2017-04-19.
  */
-public class ControllerManageTeam implements Initializable {
+public class ControllerManageTeam extends ControllerMain implements Initializable {
 
     @FXML private TextArea playersInTheTeamTextArea;
     @FXML private TextField addPlayerIDTextField;
@@ -43,13 +43,7 @@ public class ControllerManageTeam implements Initializable {
 
         if (source == backButton){
             try {
-                Node node = (Node) ae.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("CoachScene.fxml"));
-                Parent root = null;
-                root = (Parent) loader.load();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+                changeScene(ae , "CoachScene.fxml");
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

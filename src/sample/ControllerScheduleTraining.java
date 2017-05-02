@@ -18,7 +18,7 @@ import java.io.IOException;
 /**
  * Created by Daniel on 2017-04-19.
  */
-public class ControllerScheduleTraining {
+public class ControllerScheduleTraining extends ControllerMain {
 
     @FXML
     private TextField dateTextField;
@@ -37,13 +37,7 @@ public class ControllerScheduleTraining {
 
         if (source == backButton) {
             try {
-                Node node = (Node) ae.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("CoachScene.fxml"));
-                Parent root = null;
-                root = (Parent) loader.load();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+              changeScene(ae,"CoachScene.fxml");
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

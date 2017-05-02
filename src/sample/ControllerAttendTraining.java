@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 /**
  * Created by jimmyjonsson on 2017-04-26.
  */
-public class ControllerAttendTraining implements Initializable {
+public class ControllerAttendTraining extends ControllerMain implements Initializable {
 
     @FXML
     private TextField textNameAttend;
@@ -32,20 +32,13 @@ public class ControllerAttendTraining implements Initializable {
     }
     @FXML
     private void playerLogout(ActionEvent ae) {
-        Node node = (Node)ae.getSource();
-        Stage stage = (Stage)node.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("PlayerScene.fxml"));
-        Parent root = null;
-
         try {
-            root = (Parent)loader.load();
+            changeScene(ae , "PlayerScene.fxml");
         } catch (IOException var7) {
             var7.printStackTrace();
         }
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
     }
+
     @FXML
     private void saveAttendTraining(){
 

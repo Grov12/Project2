@@ -88,7 +88,7 @@ public class ControllerMain implements Initializable {
         }
     }
 
-    public void handleMenuItemEdit() {
+    private void handleMenuItemEdit() {
         if (!textUsername.getText().isEmpty() || !textPassword.getText().isEmpty() || !choiceBox.getValue().equals(null)) {
             textUsername.clear();
             textPassword.clear();
@@ -100,7 +100,7 @@ public class ControllerMain implements Initializable {
     }
 
     //Method for changing scene
-    private void changeScene (ActionEvent event, String fxml) throws IOException{
+    public void changeScene (ActionEvent event, String fxml) throws IOException{
         Node node = (Node)event.getSource();
         Stage stage = (Stage)node.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
