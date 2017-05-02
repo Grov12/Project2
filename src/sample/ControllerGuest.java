@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 /**
  * Created by robin on 2017-04-09.
  */
-public class ControllerGuest extends ControllerMain implements Initializable {
+public class ControllerGuest extends ControllerMain  {
 
 
     @FXML
@@ -30,7 +30,7 @@ public class ControllerGuest extends ControllerMain implements Initializable {
 
 
 
-
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         choiceBox.getItems().add("View Team");
         choiceBox.getItems().add("View Matches");

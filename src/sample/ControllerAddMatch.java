@@ -3,6 +3,7 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,17 +13,24 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by Daniel on 2017-04-19.
  */
-public class ControllerAddMatch extends ControllerMain {
+public class ControllerAddMatch extends ControllerMain  {
 
     @FXML private TextField opponentTextField;
     @FXML private TextField dateTextField;
     @FXML private TextField resultTextField;
     @FXML private Button backButton;
     @FXML private Button addMatchButton;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+
+    }
 
     @FXML
     private void buttonPressed(ActionEvent ae){
@@ -57,5 +65,7 @@ public class ControllerAddMatch extends ControllerMain {
         }
 
     }
+
+
 
 }

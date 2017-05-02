@@ -13,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
 /**
@@ -29,6 +31,10 @@ public class ControllerScheduleTraining extends ControllerMain {
     @FXML
     private Button addButton;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 
     @FXML
     private void buttonPressed(ActionEvent ae) {

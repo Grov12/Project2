@@ -36,6 +36,12 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
     @FXML private Button backButton;
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        playersInTheTeamTextArea.setText("");
+        // Set the text to all the players in the team.
+    }
+
     @FXML
     private void buttonPressed(ActionEvent ae){
 
@@ -92,9 +98,5 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
     }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        playersInTheTeamTextArea.setText("");
-        // Set the text to all the players in the team.
-    }
+
 }

@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 /**
  * Created by robin on 2017-04-09.
  */
-public class ControllerCoach extends ControllerPlayer implements Initializable {
+public class ControllerCoach extends ControllerPlayer  {
 
     @FXML private ChoiceBox choiceBox;
     @FXML private TextArea coachTextArea;
@@ -27,6 +27,7 @@ public class ControllerCoach extends ControllerPlayer implements Initializable {
     @FXML private Button addMatchButton;
     @FXML private Button manageTeamButton;
 
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
        choiceBox.getItems().add("View Team");
         choiceBox.getItems().add("View Matches");

@@ -87,7 +87,7 @@ public class ControllerMain implements Initializable {
 
         }
     }
-
+    @FXML
     private void handleMenuItemEdit() {
         if (!textUsername.getText().isEmpty() || !textPassword.getText().isEmpty() || !choiceBox.getValue().equals(null)) {
             textUsername.clear();
