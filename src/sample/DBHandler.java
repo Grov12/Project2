@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.Properties;
 
 
+
+
 public class DBHandler {
     private final String dbName;
     private final String user;
@@ -46,24 +48,25 @@ public class DBHandler {
         }
     }
 
-    public void addPlayerToDB(int playerID, String name, String surName, String position, String userName, String password, String team) {
-
-        try (Connection conn = DriverManager.getConnection(connectionURL)) {
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO `player` (PlayerID, Firstname,Surname,Playerposition,Username,team_name,Password) VALUE (?,?,?,?,?,?,?)");
-            pstmt.setInt(1,playerID);
-            pstmt.setString(2, name);
-            pstmt.setString(3, surName);
-            pstmt.setString(4, position);
-            pstmt.setString(5, userName);
-            pstmt.setString(7, team);
-            pstmt.setString(6,password);
-            pstmt.executeUpdate();
+    public void addPlayerToDB(String name, String surName, String position, String userName, String password, String team) {
 
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+            try (Connection conn = DriverManager.getConnection(connectionURL)) {
+                PreparedStatement pstmt = conn.prepareStatement("INSERT INTO `player` (Firstname,Surname,Playerposition,Username,team_name,Password) VALUE (?,?,?,?,?,?)");
+                pstmt.setString(1, name);
+                pstmt.setString(2, surName);
+                pstmt.setString(3, position);
+                pstmt.setString(4, userName);
+                pstmt.setString(5, team);
+                pstmt.setString(6, password);
+                pstmt.executeUpdate();
+
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-    }
+    
 
     public void deletePlayerFromDB(int index) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
@@ -231,11 +234,13 @@ public class DBHandler {
     }
     //checks if match entry exist in database to prevent duplicate entries
     public boolean doesMatchEntryExist(String opponent, String date){
+
         boolean exists = false;
+
         try(Connection conn = DriverManager.getConnection(connectionURL)) {
             PreparedStatement pstm = conn.prepareStatement("SELECT `Opponents`,`Date` FROM `match` WHERE `Opponents`=? AND `Date`=?");
-            pstm.setString(1, date);
-            pstm.setString(2, opponent);
+            pstm.setString(1, opponent);
+            pstm.setString(2, date);
             ResultSet rs = pstm.executeQuery();
 
             if(rs.next()){

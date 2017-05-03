@@ -54,18 +54,15 @@ public class ControllerAddMatch extends ControllerMain  {
                 String opponent = opponentTextField.getText();
                 String date = dateTextField.getText();
 
+
                 if (db.doesMatchEntryExist(opponent,date)) {
-                    Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
-                    dialog.setTitle("Duplicate entry");
-                    dialog.setHeaderText("The match against "+opponent+"  ("+date+ ") already exist in the database do you still want to add it?");
-                    dialog.getButtonTypes().set(0,ButtonType.YES);
-                    dialog.getButtonTypes().set(1,ButtonType.NO);
-                    dialog.showAndWait();
-
-                    if (dialog.getResult()==ButtonType.YES){
-
+                     //**
+                    // this statement ask user if he/she wants to add duplicate information into database
+                    //**
+                    if       (createConformationDialog("Duplicate entry", "The match against "+opponent+" " +
+                            "("+date+ ")" + " already exist in the database do you still " +
+                            "want to add it?").getResult()==ButtonType.NEXT.YES){
                         db.addMatchToDB(date, opponent);
-
                         if (!resultTextField.getText().isEmpty()) {
                             String result = resultTextField.getText();
                             db.setMatchResultToDB(opponent, date, result);
@@ -80,14 +77,14 @@ public class ControllerAddMatch extends ControllerMain  {
                 }
 
             } catch (NullPointerException ex){
-                Alert dialog = new Alert(Alert.AlertType.INFORMATION);
-                dialog.setTitle("Error");
-                dialog.setHeaderText("Error:");
-                dialog.setContentText("You did not enter all the required information.");
-                dialog.showAndWait();
+                createInformationDialog("Error","Error","You did not enter all the required information");
             }
         }
 
+    }
+
+    private boolean isDateFormatRight(){
+        return false;
     }
 
 

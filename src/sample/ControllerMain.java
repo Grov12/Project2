@@ -108,7 +108,22 @@ public class ControllerMain implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-
+    public Alert createConformationDialog(String titleText,String headerText){
+        Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+        dialog.setTitle(titleText);
+        dialog.setHeaderText(headerText);
+        dialog.getButtonTypes().set(0,ButtonType.YES);
+        dialog.getButtonTypes().set(1,ButtonType.NO);
+        dialog.showAndWait();
+        return dialog;
+    }
+    public void createInformationDialog(String titleText,String headerText,String contextText){
+        Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+        dialog.setTitle(titleText);
+        dialog.setHeaderText(headerText);
+        dialog.setContentText(contextText);
+        dialog.showAndWait();
+    }
 
 
 
