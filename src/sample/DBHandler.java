@@ -231,11 +231,13 @@ public class DBHandler {
     }
     //checks if match entry exist in database to prevent duplicate entries
     public boolean doesMatchEntryExist(String opponent, String date){
+
         boolean exists = false;
+
         try(Connection conn = DriverManager.getConnection(connectionURL)) {
             PreparedStatement pstm = conn.prepareStatement("SELECT `Opponents`,`Date` FROM `match` WHERE `Opponents`=? AND `Date`=?");
-            pstm.setString(1, date);
-            pstm.setString(2, opponent);
+            pstm.setString(1, opponent);
+            pstm.setString(2, date);
             ResultSet rs = pstm.executeQuery();
 
             if(rs.next()){
