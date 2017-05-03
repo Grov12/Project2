@@ -124,6 +124,13 @@ public class ControllerMain implements Initializable {
         dialog.setContentText(contextText);
         dialog.showAndWait();
     }
+    public void createErrorDialog(String titleText, String headerText, String contentText){
+        Alert dialog = new Alert(Alert.AlertType.ERROR);
+        dialog.setTitle(titleText);
+        dialog.setHeaderText(headerText);
+        dialog.setContentText(contentText);
+        dialog.showAndWait();
+    }
 
 
 

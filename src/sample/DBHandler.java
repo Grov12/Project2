@@ -255,6 +255,45 @@ public class DBHandler {
     }
 
 
+    public void scheduleTraining(String date, String time){
+
+        try (Connection connection = DriverManager.getConnection(connectionURL)){
+            PreparedStatement pstm = connection.prepareStatement("INSERT into `training` (Date,Time) VALUE (?,?)");
+            pstm.setString(1, date);
+            pstm.setString(2, time);
+            pstm.executeUpdate();
+
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+
+
+    }
+
+    public boolean duplicateTraining(String date, String time){
+
+        boolean isDuplicate = false;
+
+        try(Connection connection = DriverManager.getConnection(connectionURL)){
+            PreparedStatement pstm = connection.prepareStatement("SELECT `Date`, `Time` FROM `Training` WHERE Date=? AND Time=?");
+            pstm.setString(1, date);
+            pstm.setString(2, time);
+            ResultSet rs = pstm.executeQuery();
+
+            if (rs.next()){
+                isDuplicate = true;
+            }
+
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+
+
+        return isDuplicate;
+
+    }
+
+
 
 }
 
