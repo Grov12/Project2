@@ -53,11 +53,13 @@ public class ControllerAddMatch extends ControllerMain  {
                 DBHandler db = new DBHandler();
                 String opponent = opponentTextField.getText();
                 String date = dateTextField.getText();
+
                 if (db.doesMatchEntryExist(opponent,date)) {
                     Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
                     dialog.setTitle("Duplicate entry");
-                    dialog.setHeaderText("Error:");
-                    dialog.setContentText("The match against "+opponent+" at "+date+ "already exist in the database do you still want to add it?");
+                    dialog.setHeaderText("The match against "+opponent+"  ("+date+ ") already exist in the database do you still want to add it?");
+                    dialog.getButtonTypes().set(0,ButtonType.YES);
+                    dialog.getButtonTypes().set(1,ButtonType.NO);
                     dialog.showAndWait();
 
                     if (dialog.getResult()==ButtonType.YES){
