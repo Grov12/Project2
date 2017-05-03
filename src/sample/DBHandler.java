@@ -4,7 +4,6 @@ package sample;
 import java.io.FileInputStream;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Properties;
 
 
