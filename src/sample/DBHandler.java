@@ -105,6 +105,7 @@ public class DBHandler {
 
     }
     public void setMatchResultToDB(String date, String opponent,String result){
+
         try(Connection conn = DriverManager.getConnection(connectionURL)){
             PreparedStatement pstm = conn.prepareStatement("UPDATE `match` SET `Result`=? WHERE `Date`=? AND `Opponents`=?");
             pstm.setString(1, result);
@@ -232,6 +233,7 @@ public class DBHandler {
             e.printStackTrace();
         }
     }
+
     //checks if match entry exist in database to prevent duplicate entries
     public boolean doesMatchEntryExist(String opponent, String date){
 
