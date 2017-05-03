@@ -3,26 +3,36 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 /**
  * Created by Daniel on 2017-04-19.
  */
-public class ControllerAddMatch {
+public class ControllerAddMatch extends ControllerMain  {
 
     @FXML private TextField opponentTextField;
     @FXML private TextField dateTextField;
     @FXML private TextField resultTextField;
     @FXML private Button backButton;
     @FXML private Button addMatchButton;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+
+    }
 
     @FXML
     private void buttonPressed(ActionEvent ae){
@@ -31,13 +41,7 @@ public class ControllerAddMatch {
 
         if (source == backButton) {
             try {
-                Node node = (Node) ae.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("CoachScene.fxml"));
-                Parent root = null;
-                root = (Parent) loader.load();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+               changeScene(ae , "CoachScene.fxml");
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -46,12 +50,34 @@ public class ControllerAddMatch {
         if (source == addMatchButton){
 
             try {
+                DBHandler db = new DBHandler();
                 String opponent = opponentTextField.getText();
                 String date = dateTextField.getText();
-                String result = resultTextField.getText();
-                int matchID = DataStorage.getInstance().getMatchList().size() + 1;
 
-                //addMatchToDB(matchID, opponent, date, result);
+                if (db.doesMatchEntryExist(opponent,date)) {
+                    Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+                    dialog.setTitle("Duplicate entry");
+                    dialog.setHeaderText("The match against "+opponent+"  ("+date+ ") already exist in the database do you still want to add it?");
+                    dialog.getButtonTypes().set(0,ButtonType.YES);
+                    dialog.getButtonTypes().set(1,ButtonType.NO);
+                    dialog.showAndWait();
+
+                    if (dialog.getResult()==ButtonType.YES){
+
+                        db.addMatchToDB(date, opponent);
+
+                        if (!resultTextField.getText().isEmpty()) {
+                            String result = resultTextField.getText();
+                            db.setMatchResultToDB(opponent, date, result);
+                        }
+                    }
+                }else {
+                    db.addMatchToDB(date, opponent);
+                    if (!resultTextField.getText().isEmpty()) {
+                        String result = resultTextField.getText();
+                        db.setMatchResultToDB(opponent, date, result);
+                    }
+                }
 
             } catch (NullPointerException ex){
                 Alert dialog = new Alert(Alert.AlertType.INFORMATION);
@@ -63,5 +89,7 @@ public class ControllerAddMatch {
         }
 
     }
+
+
 
 }

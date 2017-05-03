@@ -13,12 +13,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
 /**
  * Created by Daniel on 2017-04-19.
  */
-public class ControllerScheduleTraining {
+public class ControllerScheduleTraining extends ControllerMain {
 
     @FXML
     private TextField dateTextField;
@@ -29,6 +31,10 @@ public class ControllerScheduleTraining {
     @FXML
     private Button addButton;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 
     @FXML
     private void buttonPressed(ActionEvent ae) {
@@ -37,13 +43,7 @@ public class ControllerScheduleTraining {
 
         if (source == backButton) {
             try {
-                Node node = (Node) ae.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("CoachScene.fxml"));
-                Parent root = null;
-                root = (Parent) loader.load();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+              changeScene(ae,"CoachScene.fxml");
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

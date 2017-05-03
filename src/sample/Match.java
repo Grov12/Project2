@@ -6,13 +6,11 @@ package sample;
 public class Match {
     private int match_ID;
     private String opponent;
-    private String result;
+    private String result = "Not set";
     private String date;
 
     public Match(int match_ID, String opponent, String result, String date) {
-        this.match_ID = match_ID;
         this.opponent = opponent;
-        this.result = result;
         this.date = date;
     }
 

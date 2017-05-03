@@ -51,21 +51,22 @@ public class DBHandler {
     public void addPlayerToDB(String name, String surName, String position, String userName, String password, String team) {
 
 
-        try (Connection conn = DriverManager.getConnection(connectionURL)) {
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO `player` (Firstname,Surname,Playerposition,Username,team_name,Password) VALUE (?,?,?,?,?,?)");
-            pstmt.setString(1, name);
-            pstmt.setString(2, surName);
-            pstmt.setString(3, position);
-            pstmt.setString(4, userName);
-            pstmt.setString(5,team);
-            pstmt.setString(6,password);
-            pstmt.executeUpdate();
+            try (Connection conn = DriverManager.getConnection(connectionURL)) {
+                PreparedStatement pstmt = conn.prepareStatement("INSERT INTO `player` (Firstname,Surname,Playerposition,Username,team_name,Password) VALUE (?,?,?,?,?,?)");
+                pstmt.setString(1, name);
+                pstmt.setString(2, surName);
+                pstmt.setString(3, position);
+                pstmt.setString(4, userName);
+                pstmt.setString(5, team);
+                pstmt.setString(6, password);
+                pstmt.executeUpdate();
 
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-    }
+    
 
     public void deletePlayerFromDB(int index) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
@@ -102,6 +103,18 @@ public class DBHandler {
             e.printStackTrace();
         }
 
+    }
+    public void setMatchResultToDB(String date, String opponent,String result){
+        try(Connection conn = DriverManager.getConnection(connectionURL)){
+            PreparedStatement pstm = conn.prepareStatement("UPDATE `match` SET `Result`=? WHERE `Date`=? AND `Opponents`=?");
+            pstm.setString(1, result);
+            pstm.setString(2, date);
+            pstm.setString(3, opponent);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public boolean handleLoginCoach(String userName, String password) {
         boolean result = false;
@@ -218,6 +231,25 @@ public class DBHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    //checks if match entry exist in database to prevent duplicate entries
+    public boolean doesMatchEntryExist(String opponent, String date){
+        boolean exists = false;
+        try(Connection conn = DriverManager.getConnection(connectionURL)) {
+            PreparedStatement pstm = conn.prepareStatement("SELECT `Opponents`,`Date` FROM `match` WHERE `Opponents`=? AND `Date`=?");
+            pstm.setString(1, date);
+            pstm.setString(2, opponent);
+            ResultSet rs = pstm.executeQuery();
+
+            if(rs.next()){
+                exists = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exists;
+
     }
 
 

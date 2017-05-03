@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 /**
  * Created by robin on 2017-04-09.
  */
-public class ControllerCoach extends ControllerPlayer implements Initializable {
+public class ControllerCoach extends ControllerPlayer  {
 
     @FXML private ChoiceBox choiceBox;
     @FXML private TextArea coachTextArea;
@@ -27,6 +27,7 @@ public class ControllerCoach extends ControllerPlayer implements Initializable {
     @FXML private Button addMatchButton;
     @FXML private Button manageTeamButton;
 
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
        choiceBox.getItems().add("View Team");
         choiceBox.getItems().add("View Matches");
@@ -39,19 +40,13 @@ public class ControllerCoach extends ControllerPlayer implements Initializable {
 
     @FXML
     private void coachLogout(ActionEvent ae) {
-        Node node = (Node)ae.getSource();
-        Stage stage = (Stage)node.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("MainScene.fxml"));
-        Parent root = null;
 
         try {
-            root = (Parent)loader.load();
+            changeScene(ae,"MainScene.fxml");
         } catch (IOException var7) {
             var7.printStackTrace();
         }
 
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
     }
 
     @FXML
@@ -61,13 +56,7 @@ public class ControllerCoach extends ControllerPlayer implements Initializable {
 
         if (source == scheduleTrainingButton){
             try {
-                Node node = (Node) ae.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("ScheduleTraining.fxml"));
-                Parent root = null;
-                root = (Parent) loader.load();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+              changeScene(ae,"ScheduleTraining.fxml");
             } catch (IOException ex){
                 ex.printStackTrace();
             }
@@ -75,13 +64,7 @@ public class ControllerCoach extends ControllerPlayer implements Initializable {
 
         if (source == addMatchButton){
             try {
-                Node node = (Node) ae.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("AddMatch.fxml"));
-                Parent root = null;
-                root = (Parent) loader.load();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+            changeScene(ae,"AddMatch.fxml");
             } catch (IOException ex){
                 ex.printStackTrace();
             }
@@ -89,13 +72,7 @@ public class ControllerCoach extends ControllerPlayer implements Initializable {
 
         if (source == manageTeamButton){
             try {
-                Node node = (Node) ae.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("ManageTeam.fxml"));
-                Parent root = null;
-                root = (Parent) loader.load();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+            changeScene(ae,"ManageTeam.fxml");
             } catch (IOException ex){
                 ex.printStackTrace();
             }

@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Daniel on 2017-04-19.
  */
-public class ControllerManageTeam implements Initializable {
+public class ControllerManageTeam extends ControllerMain implements Initializable {
 
     @FXML private TextArea playersInTheTeamTextArea;
     @FXML private TextField removePlayerIDTextField;
@@ -35,6 +35,12 @@ public class ControllerManageTeam implements Initializable {
     @FXML private Button backButton;
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        playersInTheTeamTextArea.setText("");
+        // Set the text to all the players in the team.
+    }
+
     @FXML
     private void buttonPressed(ActionEvent ae){
 
@@ -42,13 +48,7 @@ public class ControllerManageTeam implements Initializable {
 
         if (source == backButton){
             try {
-                Node node = (Node) ae.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("CoachScene.fxml"));
-                Parent root = null;
-                root = (Parent) loader.load();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+                changeScene(ae , "CoachScene.fxml");
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -86,6 +86,7 @@ public class ControllerManageTeam implements Initializable {
             DBHandler dbHandler = new DBHandler();
             dbHandler.addPlayerToDB(firstname,surname,position,username,password,"MalmöFF");
 
+
         } catch (NullPointerException ex){
             Alert dialog = new Alert(Alert.AlertType.ERROR);
             dialog.setTitle("Error");
@@ -96,9 +97,5 @@ public class ControllerManageTeam implements Initializable {
     }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        playersInTheTeamTextArea.setText("");
-        // Set the text to all the players in the team.
-    }
+
 }

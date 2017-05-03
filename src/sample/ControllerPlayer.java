@@ -44,19 +44,15 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
 
     @FXML
     private void playerLogout(ActionEvent ae) {
-        Node node = (Node) ae.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("MainScene.fxml"));
-        Parent root = null;
+
 
         try {
-            root = (Parent) loader.load();
+            changeScene(ae,"MainScene.fxml");
         } catch (IOException var7) {
             var7.printStackTrace();
         }
 
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
+       ;
 
     }
 
@@ -96,36 +92,24 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
 
         }
 
-
         @FXML
         private void attendTraining (ActionEvent ae){
-            Node node = (Node) ae.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayerSceneAttend.fxml"));
-            Parent root = null;
+
             try {
-                root = (Parent) loader.load();
+               changeScene(ae,"PlayerSceneAttend.fxml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+
 
         }
-
 
         @FXML
         public void absence (ActionEvent ae){
 
             try {
 
-                Node node = (Node) ae.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("PlayerSceneAbsence.fxml"));
-                Parent root;
-                root = loader.load();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+                changeScene(ae, "PlayerSceneAbsence.fxml");
             } catch (IOException em) {
                 em.printStackTrace();
 
@@ -133,10 +117,6 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
 
 
         }
-
-
-
-
     }
 
 
