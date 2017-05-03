@@ -16,8 +16,21 @@ public class Player {
     private Position position;
 
 
+    @Override
+    public String toString() {
+        return "Player{" +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", goalsScored=" + goalsScored +
+                ", yellowCards=" + yellowCards +
+                ", redCards=" + redCards +
+                ", position=" + position +
+                '}';
+    }
 
-    public Player(int player_ID, String firstName, String lastName, String userName, String password, Position position) {
+    public Player(String firstName, String lastName, String userName, String password, Position position) {
         this.player_ID = player_ID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,8 +40,10 @@ public class Player {
 
     }
 
+
+
     public enum Position{
-        GOALKEEPER, DEFENDER, MIDFIELDER, FORWARD
+        Goalkeeper, Defender, Midfielder, Forward
     }
 
     public int getPlayer_ID() {
