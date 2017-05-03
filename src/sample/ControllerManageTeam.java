@@ -93,6 +93,8 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             DBHandler dbHandler = new DBHandler();
             dbHandler.addPlayerToDB(firstname,surname,position,username,password,"MalmöFF");
 
+            DataStorage.getInstance().UpdatePlayerStorage();
+
 
         } catch (NullPointerException ex){
             Alert dialog = new Alert(Alert.AlertType.ERROR);

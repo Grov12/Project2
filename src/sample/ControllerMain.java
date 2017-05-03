@@ -29,7 +29,7 @@ public class ControllerMain implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         DBHandler dbHandler = new DBHandler();
 
-
+        DataStorage.getInstance().UpdatePlayerStorage();
 
         choiceBox.getItems().add("Guest");
         choiceBox.getItems().add("Coach");
@@ -122,6 +122,13 @@ public class ControllerMain implements Initializable {
         dialog.setTitle(titleText);
         dialog.setHeaderText(headerText);
         dialog.setContentText(contextText);
+        dialog.showAndWait();
+    }
+    public void createErrorDialog(String titleText, String headerText, String contentText){
+        Alert dialog = new Alert(Alert.AlertType.ERROR);
+        dialog.setTitle(titleText);
+        dialog.setHeaderText(headerText);
+        dialog.setContentText(contentText);
         dialog.showAndWait();
     }
 
