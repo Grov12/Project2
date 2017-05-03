@@ -104,15 +104,11 @@ public class DBHandler {
         }
 
     }
-<<<<<<< HEAD
+
 
     public void setMatchResultToDB(String date, String opponent, String result) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
-=======
-    public void setMatchResultToDB(String date, String opponent,String result){
 
-        try(Connection conn = DriverManager.getConnection(connectionURL)){
->>>>>>> 83d4858416c5bc2d62ddfdc8a0e03fde72fee47e
             PreparedStatement pstm = conn.prepareStatement("UPDATE `match` SET `Result`=? WHERE `Date`=? AND `Opponents`=?");
             pstm.setString(1, result);
             pstm.setString(2, date);
@@ -268,10 +264,12 @@ public class DBHandler {
 
     public void playerController(ArrayList<Player> list) {
         Player player = null;
+
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * from player");
-            while(rs.next()) {
+
+            while (rs.next()) {
                 String name = rs.getString("Firstname");
                 String surname = rs.getString("Surname");
                 String userername = rs.getString("Username");
@@ -279,13 +277,13 @@ public class DBHandler {
                 String playerposition = rs.getString("Playerposition");
                 player = new Player(name, surname, userername, password, Player.Position.valueOf(playerposition));
                 list.add(player);
-
-
             }
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
-
-<<<<<<< HEAD
     public void scheduleTraining(String date, String time){
 
         try (Connection connection = DriverManager.getConnection(connectionURL)){
@@ -324,15 +322,6 @@ public class DBHandler {
 
     }
 
-
-=======
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
->>>>>>> 3f281bc0a0aaedfb19b7ff0f3deedc5e6ae235d6
-
-
-    }
 }
 
 
