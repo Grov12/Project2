@@ -63,16 +63,18 @@ public class ControllerAddMatch extends ControllerMain  {
                             "("+date+ ")" + " already exist in the database do you still " +
                             "want to add it?").getResult()==ButtonType.NEXT.YES){
                         db.addMatchToDB(date, opponent);
+                        //if a result is entered add it to the database
                         if (!resultTextField.getText().isEmpty()) {
                             String result = resultTextField.getText();
-                            db.setMatchResultToDB(opponent, date, result);
+                            db.setMatchResultToDB(date,opponent,result);
                         }
                     }
                 }else {
                     db.addMatchToDB(date, opponent);
+                    //if a result is entered add it to the database
                     if (!resultTextField.getText().isEmpty()) {
                         String result = resultTextField.getText();
-                        db.setMatchResultToDB(opponent, date, result);
+                        db.setMatchResultToDB(date,opponent,result);
                     }
                 }
 
