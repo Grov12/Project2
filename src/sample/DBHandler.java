@@ -46,7 +46,7 @@ public class DBHandler {
         }
     }
 
-    public void addPlayerToDB(int playerID, String name, String surName, String position, String userName, String password,String team) {
+    public void addPlayerToDB(int playerID, String name, String surName, String position, String userName, String password, String team) {
 
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO `player` (PlayerID, Firstname,Surname,Playerposition,Username,team_name,Password) VALUE (?,?,?,?,?,?,?)");

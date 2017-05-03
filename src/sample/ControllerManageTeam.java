@@ -88,6 +88,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             DBHandler dbHandler = new DBHandler();
 
 
+
         } catch (NullPointerException ex){
             Alert dialog = new Alert(Alert.AlertType.ERROR);
             dialog.setTitle("Error");
