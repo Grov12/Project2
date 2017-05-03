@@ -29,7 +29,7 @@ public class ControllerMain implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         DBHandler dbHandler = new DBHandler();
 
-
+        DataStorage.getInstance().UpdatePlayerStorage();
 
         choiceBox.getItems().add("Guest");
         choiceBox.getItems().add("Coach");

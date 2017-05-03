@@ -16,7 +16,7 @@ public class DataStorage {
     private static DataStorage instance;
 
     public static DataStorage getInstance() {
-        if(instance == null){
+        if (instance == null) {
             instance = new DataStorage();
         }
         return instance;
@@ -48,5 +48,17 @@ public class DataStorage {
 
     public ArrayList<Team> getTeamList() {
         return teamList;
+    }
+
+
+
+
+
+    public void UpdatePlayerStorage() {
+        playerList.clear();
+        DBHandler dbHandler = new DBHandler();
+       dbHandler.playerController(playerList);
+
+
     }
 }
