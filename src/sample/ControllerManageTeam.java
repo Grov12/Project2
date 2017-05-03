@@ -66,9 +66,9 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
         if (source == removePlayerButton){
             try {
                 DBHandler dbHandler = new DBHandler();
-
                 int index = Integer.parseInt(removePlayerIDTextField.getText());
                 dbHandler.deletePlayerFromDB(index);
+
             } catch (InputMismatchException ex){
                 Alert dialog = new Alert(Alert.AlertType.ERROR);
                 dialog.setTitle("Error");
@@ -102,6 +102,14 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             dialog.setHeaderText("Error:");
             dialog.setContentText("You did not enter all the required information.");
             dialog.showAndWait();
+        }
+        catch (IllegalArgumentException il){
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("Error");
+            dialog.setHeaderText("Error:");
+            dialog.setContentText("Not a correct postition");
+            dialog.showAndWait();
+
         }
     }
 

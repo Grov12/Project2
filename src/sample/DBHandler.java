@@ -178,7 +178,7 @@ public class DBHandler {
     public void viewPlayerStatisticsDB() {
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM player "); //Implement the correct table
+            ResultSet rs = statement.executeQuery("SELECT Firstname, Surname, GoalsScored, Yellowcards, Redcards FROM player "); //Implement the correct table
             while (rs.next()) {
                 System.out.println(rs.getString("PlayerID"));
 
@@ -227,7 +227,7 @@ public class DBHandler {
     public void viewTeamDB() {
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM match"); //Implement the correct table
+            ResultSet rs = statement.executeQuery("SELECT * FROM team"); //Implement the correct table
             while (rs.next()) {
                 System.out.println(rs.getString("CoachUsername"));
 
