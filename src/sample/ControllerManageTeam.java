@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
@@ -38,7 +39,11 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        playersInTheTeamTextArea.setText("");
+
+        ControllerGuest viewPlayer = new ControllerGuest();
+        viewPlayer.viewPlayers(playersInTheTeamTextArea);
+
+
         // Set the text to all the players in the team.
     }
 
@@ -61,8 +66,10 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
 
         if (source == removePlayerButton){
             try {
+                DBHandler dbHandler = new DBHandler();
+
                 int index = Integer.parseInt(removePlayerIDTextField.getText());
-                //deletePlayerFromDB(index);
+                dbHandler.deletePlayerFromDB(index);
             } catch (InputMismatchException ex){
                 Alert dialog = new Alert(Alert.AlertType.ERROR);
                 dialog.setTitle("Error");

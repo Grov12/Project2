@@ -117,7 +117,7 @@ public class ControllerGuest extends ControllerMain  {
         dbView.viewMatchDB();
     }
 
-    public static void viewPlayers(TextArea tx) {
+    public void viewPlayers(TextArea tx) {
         try {
             DBHandler dbView = new DBHandler();
             tx.setText(String.valueOf(dbView.viewPlayersDB()).toString().replace("[", "").replace("]", "").replace(",", ""));
@@ -131,6 +131,7 @@ public class ControllerGuest extends ControllerMain  {
 
     public static void viewPlayerStatistics() {
         DBHandler dbView = new DBHandler();
+
         dbView.viewPlayerStatisticsDB();
     }
 
