@@ -9,11 +9,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -48,12 +50,32 @@ public class ControllerAddMatch extends ControllerMain  {
         if (source == addMatchButton){
 
             try {
+                DBHandler db = new DBHandler();
                 String opponent = opponentTextField.getText();
                 String date = dateTextField.getText();
-                String result = resultTextField.getText();
-                int matchID = DataStorage.getInstance().getMatchList().size() + 1;
+                if (db.doesMatchEntryExist(opponent,date)) {
+                    Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+                    dialog.setTitle("Duplicate entry");
+                    dialog.setHeaderText("Error:");
+                    dialog.setContentText("The match against "+opponent+" at "+date+ "already exist in the database do you still want to add it?");
+                    dialog.showAndWait();
 
-                //addMatchToDB(matchID, opponent, date, result);
+                    if (dialog.getResult()==ButtonType.YES){
+
+                        db.addMatchToDB(date, opponent);
+
+                        if (!resultTextField.getText().isEmpty()) {
+                            String result = resultTextField.getText();
+                            db.setMatchResultToDB(opponent, date, result);
+                        }
+                    }
+                }else {
+                    db.addMatchToDB(date, opponent);
+                    if (!resultTextField.getText().isEmpty()) {
+                        String result = resultTextField.getText();
+                        db.setMatchResultToDB(opponent, date, result);
+                    }
+                }
 
             } catch (NullPointerException ex){
                 Alert dialog = new Alert(Alert.AlertType.INFORMATION);

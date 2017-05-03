@@ -101,6 +101,18 @@ public class DBHandler {
         }
 
     }
+    public void setMatchResultToDB(String date, String opponent,String result){
+        try(Connection conn = DriverManager.getConnection(connectionURL)){
+            PreparedStatement pstm = conn.prepareStatement("UPDATE `match` SET `Result`=? WHERE `Date`=? AND `Opponents`=?");
+            pstm.setString(1, result);
+            pstm.setString(2, date);
+            pstm.setString(3, opponent);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public boolean handleLoginCoach(String userName, String password) {
         boolean result = false;
         try(Connection conn = DriverManager.getConnection(connectionURL)) {
@@ -216,6 +228,24 @@ public class DBHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    //checks if match entry exist in database to prevent duplicate entries
+    public boolean doesMatchEntryExist(String opponent, String date){
+        boolean exists = true;
+        try(Connection conn = DriverManager.getConnection(connectionURL)) {
+            PreparedStatement pstm = conn.prepareStatement("SELECT `Opponents`,`Date` FROM `match` WHERE `Opponents`=? AND `Date`=?");
+            pstm.setString(1, date);
+            pstm.setString(2, opponent);
+            ResultSet rs = pstm.executeQuery();
+            if(!rs.isBeforeFirst()){
+                exists = false;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exists;
+
     }
 
 
