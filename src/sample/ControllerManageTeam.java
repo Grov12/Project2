@@ -24,7 +24,6 @@ import java.util.ResourceBundle;
 public class ControllerManageTeam implements Initializable {
 
     @FXML private TextArea playersInTheTeamTextArea;
-    @FXML private TextField addPlayerIDTextField;
     @FXML private TextField removePlayerIDTextField;
     @FXML private TextField firstNameTextField;
     @FXML private TextField surNameTextField;
@@ -78,7 +77,6 @@ public class ControllerManageTeam implements Initializable {
     public void addPlayer(){
 
         try {
-            int playerID = DataStorage.getInstance().getPlayerList().size() + 1;
             String firstname = firstNameTextField.getText();
             String surname = surNameTextField.getText();
             String position = String.valueOf(Player.Position.valueOf(positionTextField.getText().toUpperCase()));
@@ -86,7 +84,7 @@ public class ControllerManageTeam implements Initializable {
             String password = passwordTextField.getText();
 
             DBHandler dbHandler = new DBHandler();
-
+            dbHandler.addPlayerToDB(firstname,surname,position,username,password,"MalmöFF");
 
         } catch (NullPointerException ex){
             Alert dialog = new Alert(Alert.AlertType.ERROR);
