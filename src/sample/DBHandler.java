@@ -175,34 +175,47 @@ public class DBHandler {
         }
     }
 
-    public void viewPlayerStatisticsDB() {
+    public ArrayList<String> viewPlayerStatisticsDB() {
+        ArrayList<String> playerStatistic = new ArrayList<>();
+        String m = null;
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT Firstname, Surname, GoalsScored, Yellowcards, Redcards FROM player "); //Implement the correct table
+            ResultSet rs = statement.executeQuery("SELECT * FROM player"); //Implement the correct table
             while (rs.next()) {
-                System.out.println(rs.getString("PlayerID"));
+                String s1 = rs.getString("Surname");
+                String s2 = rs.getString("Firstname");
+                String s3 = rs.getString("GoalsScored");
+                String s4 = rs.getString("Yellowcards");
+                String s5 = rs.getString("Redcards");
+                m = s1 + " " + s2 + " "+ s3 + " " + s4 + " " + s5+"\n";
+                playerStatistic.add(m);
 
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return playerStatistic;
     }
 
-    public void viewMatchStatisticsDB() {
+    public ArrayList<String> viewMatchStatisticsDB() {
+        ArrayList<String> matchStatistic = new ArrayList<>();
+        String m = null;
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM match"); //Implement the correct table
             while (rs.next()) {
-                System.out.println(rs.getString("MatchID"));
+                String s1 = rs.getString("MatchID");
+                String s2 = rs.getString("Date");
+                String s3 = rs.getString("Opponents");
+                String s4 = rs.getString("Result");
+                m = s1 + " " + s2 + " "+ s3 + " " + s4 + " " + "\n";
+                matchStatistic.add(m);
 
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return matchStatistic;
     }
 
     public ArrayList<String> viewPlayersDB() {

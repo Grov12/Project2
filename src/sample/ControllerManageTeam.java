@@ -86,7 +86,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
         try {
             String firstname = firstNameTextField.getText();
             String surname = surNameTextField.getText();
-            String position = String.valueOf(Player.Position.valueOf(positionTextField.getText().toUpperCase()));
+            String position = String.valueOf(Player.Position.valueOf(positionTextField.getText()));
             String username = userNameTextField.getText();
             String password = passwordTextField.getText();
 
@@ -103,14 +103,9 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             dialog.setContentText("You did not enter all the required information.");
             dialog.showAndWait();
         }
-        catch (IllegalArgumentException il){
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setTitle("Error");
-            dialog.setHeaderText("Error:");
-            dialog.setContentText("Not a correct postition");
-            dialog.showAndWait();
 
-        }
+
+
     }
 
 
