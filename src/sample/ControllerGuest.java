@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
@@ -88,11 +89,11 @@ public class ControllerGuest extends ControllerMain  {
         }
 
         if (choiceBox.getValue().equals("View Player Statistics")){
-            viewPlayerStatistics();
+            viewPlayerStatistics(guestTextArea);
         }
 
         if (choiceBox.getValue().equals("View Match Statistics")){
-            viewMatchStatistics();
+            viewMatchStatistics(guestTextArea);
         }
 
         if (choiceBox.getValue().equals("View Training")){
@@ -117,7 +118,7 @@ public class ControllerGuest extends ControllerMain  {
         dbView.viewMatchDB();
     }
 
-    public static void viewPlayers(TextArea tx) {
+    public void viewPlayers(TextArea tx) {
         try {
             DBHandler dbView = new DBHandler();
             tx.setText(String.valueOf(dbView.viewPlayersDB()).toString().replace("[", "").replace("]", "").replace(",", ""));
@@ -129,14 +130,37 @@ public class ControllerGuest extends ControllerMain  {
 
     }
 
-    public static void viewPlayerStatistics() {
-        DBHandler dbView = new DBHandler();
-        dbView.viewPlayerStatisticsDB();
+    public void viewPlayerStatistics(TextArea text) {
+        try {
+            DBHandler dbView = new DBHandler();
+            text.setText(String.valueOf(dbView.viewPlayerStatisticsDB()).replace("[", "").replace("]", "").replace(",", ""));
+        } catch (Exception e) {
+
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("Error");
+            dialog.setHeaderText("Error:");
+            dialog.setContentText("Something went wrong when loading Player Statistics");
+            dialog.showAndWait();
+
+        }
     }
 
-    public static void viewMatchStatistics(){
-        DBHandler dbView = new DBHandler();
-        dbView.viewMatchStatisticsDB();
+
+
+    public void viewMatchStatistics(TextArea teext){
+        try {
+            DBHandler dbView = new DBHandler();
+            teext.setText(String.valueOf(dbView.viewMatchStatisticsDB()).replace("[", "").replace("]", "").replace(",", ""));
+        } catch(Exception e) {
+
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("Error");
+            dialog.setHeaderText("Error:");
+            dialog.setContentText("Something went wrong when loading Match Statistics");
+            dialog.showAndWait();
+
+        }
+
     }
 
     public static void viewTraining(){
