@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,10 +38,12 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources)  {
 
         ControllerGuest viewPlayer = new ControllerGuest();
         viewPlayer.viewPlayers(playersInTheTeamTextArea);
+
+
 
 
         // Set the text to all the players in the team.
@@ -90,10 +93,14 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             String username = userNameTextField.getText();
             String password = passwordTextField.getText();
 
+
             DBHandler dbHandler = new DBHandler();
             dbHandler.addPlayerToDB(firstname,surname,position,username,password,"MalmöFF");
 
             DataStorage.getInstance().UpdatePlayerStorage();
+
+            ControllerGuest viewPlayer = new ControllerGuest();
+            viewPlayer.viewPlayers(playersInTheTeamTextArea);
 
 
         } catch (NullPointerException ex){
