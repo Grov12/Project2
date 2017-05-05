@@ -80,7 +80,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
 
 
         }
-    
+
 
 
     public void addPlayer() {

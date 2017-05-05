@@ -203,7 +203,7 @@ public class DBHandler {
         String m = null;
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM match"); //Implement the correct table
+            ResultSet rs = statement.executeQuery("SELECT * FROM `match`"); //Implement the correct table
             while (rs.next()) {
                 String s1 = rs.getString("MatchID");
                 String s2 = rs.getString("Date");
