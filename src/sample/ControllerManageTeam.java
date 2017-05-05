@@ -48,44 +48,40 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
 
 
     @Override
-<<<<<<< HEAD
+
     public void initialize(URL location, ResourceBundle resources) {
-=======
-    public void initialize(URL location, ResourceBundle resources)  {
-
->>>>>>> 88bc9c0882b6ba669d2f6a0221c644d7d1aeb467
-        ControllerGuest viewPlayer = new ControllerGuest();
-        viewPlayer.viewPlayers(playersInTheTeamTextArea);
+            ControllerGuest viewPlayer = new ControllerGuest();
+            viewPlayer.viewPlayers(playersInTheTeamTextArea);
 
 
+            // Set the text to all the players in the team.
+        }
 
+        @FXML
+        private void buttonPressed (ActionEvent ae){
 
-        // Set the text to all the players in the team.
-    }
+            Button source = (Button) ae.getSource();
 
-    @FXML
-    private void buttonPressed(ActionEvent ae) {
-
-        Button source = (Button) ae.getSource();
-
-        if (source == backButton) {
-            try {
-                changeScene(ae, "CoachScene.fxml");
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            if (source == backButton) {
+                try {
+                    changeScene(ae, "CoachScene.fxml");
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
+
+            if (source == addPlayerButton) {
+                addPlayer();
+            }
+
+            if (source == removePlayerButton) {
+                deletePlayerFromDB();
+            }
+
+
         }
+    
 
-        if (source == addPlayerButton) {
-            addPlayer();
-        }
-
-        if (source == removePlayerButton) {
-            deletePlayerFromDB();
-        }
-
-
-    }
 
     public void addPlayer() {
 
@@ -97,7 +93,6 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             String username = userNameTextField.getText();
             String password = passwordTextField.getText();
 
-<<<<<<< HEAD
             if (!firstname.isEmpty() && !surname.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
                 DBHandler dbHandler = new DBHandler();
                 dbHandler.addPlayerToDB(firstname, surname, position, username, password, "MalmöFF");
@@ -113,14 +108,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             createErrorDialog("Please fill in everything", "Error", "Fill in everything!");
         }
     }
-=======
 
-            DBHandler dbHandler = new DBHandler();
-            dbHandler.addPlayerToDB(firstname,surname,position,username,password,"MalmöFF");
->>>>>>> 88bc9c0882b6ba669d2f6a0221c644d7d1aeb467
-
-
-<<<<<<< HEAD
     public void deletePlayerFromDB() {
         try {
             DBHandler dbHandler = new DBHandler();
@@ -128,11 +116,8 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             dbHandler.deletePlayerFromDB(index);
             ControllerGuest viewPlayer = new ControllerGuest();
             viewPlayer.viewPlayers(playersInTheTeamTextArea);
-=======
-            ControllerGuest viewPlayer = new ControllerGuest();
-            viewPlayer.viewPlayers(playersInTheTeamTextArea);
 
->>>>>>> 88bc9c0882b6ba669d2f6a0221c644d7d1aeb467
+
 
 
         } catch (InputMismatchException ex) {
