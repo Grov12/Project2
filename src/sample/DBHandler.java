@@ -104,25 +104,24 @@ public class DBHandler {
         }
 
     }
-<<<<<<< HEAD
+
 
     public void setMatchResultToDB(String date, String opponent, String result) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
-=======
-    public void setMatchResultToDB(String date, String opponent,String result){
 
-        try(Connection conn = DriverManager.getConnection(connectionURL)){
->>>>>>> 83d4858416c5bc2d62ddfdc8a0e03fde72fee47e
-            PreparedStatement pstm = conn.prepareStatement("UPDATE `match` SET `Result`=? WHERE `Date`=? AND `Opponents`=?");
-            pstm.setString(1, result);
-            pstm.setString(2, date);
-            pstm.setString(3, opponent);
-            pstm.executeUpdate();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+                    PreparedStatement pstm = conn.prepareStatement("UPDATE `match` SET `Result`=? WHERE `Date`=? AND `Opponents`=?");
+                    pstm.setString(1, result);
+                    pstm.setString(2, date);
+                    pstm.setString(3, opponent);
+                    pstm.executeUpdate();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
 
     public boolean handleLoginCoach(String userName, String password) {
         boolean result = false;
