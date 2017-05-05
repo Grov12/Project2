@@ -52,7 +52,6 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
             var7.printStackTrace();
         }
 
-       ;
 
     }
 

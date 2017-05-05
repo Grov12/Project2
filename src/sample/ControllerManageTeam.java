@@ -24,21 +24,30 @@ import java.util.ResourceBundle;
  */
 public class ControllerManageTeam extends ControllerMain implements Initializable {
 
-    @FXML private TextArea playersInTheTeamTextArea;
-    @FXML private TextField removePlayerIDTextField;
-    @FXML private TextField firstNameTextField;
-    @FXML private TextField surNameTextField;
-    @FXML private TextField positionTextField;
-    @FXML private TextField userNameTextField;
-    @FXML private TextField passwordTextField;
-    @FXML private Button addPlayerButton;
-    @FXML private Button removePlayerButton;
-    @FXML private Button backButton;
+    @FXML
+    private TextArea playersInTheTeamTextArea;
+    @FXML
+    private TextField removePlayerIDTextField;
+    @FXML
+    private TextField firstNameTextField;
+    @FXML
+    private TextField surNameTextField;
+    @FXML
+    private TextField positionTextField;
+    @FXML
+    private TextField userNameTextField;
+    @FXML
+    private TextField passwordTextField;
+    @FXML
+    private Button addPlayerButton;
+    @FXML
+    private Button removePlayerButton;
+    @FXML
+    private Button backButton;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         ControllerGuest viewPlayer = new ControllerGuest();
         viewPlayer.viewPlayers(playersInTheTeamTextArea);
 
@@ -47,67 +56,73 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
     }
 
     @FXML
-    private void buttonPressed(ActionEvent ae){
+    private void buttonPressed(ActionEvent ae) {
 
         Button source = (Button) ae.getSource();
 
-        if (source == backButton){
+        if (source == backButton) {
             try {
-                changeScene(ae , "CoachScene.fxml");
+                changeScene(ae, "CoachScene.fxml");
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
 
-        if (source == addPlayerButton){
+        if (source == addPlayerButton) {
             addPlayer();
         }
 
-        if (source == removePlayerButton){
-            try {
-                DBHandler dbHandler = new DBHandler();
-                int index = Integer.parseInt(removePlayerIDTextField.getText());
-                dbHandler.deletePlayerFromDB(index);
-
-            } catch (InputMismatchException ex){
-                Alert dialog = new Alert(Alert.AlertType.ERROR);
-                dialog.setTitle("Error");
-                dialog.setHeaderText("Error:");
-                dialog.setContentText("Your input was invalid.");
-                dialog.showAndWait();
-            }
+        if (source == removePlayerButton) {
+            deletePlayerFromDB();
         }
 
 
     }
 
-    public void addPlayer(){
+    public void addPlayer() {
 
         try {
+
             String firstname = firstNameTextField.getText();
             String surname = surNameTextField.getText();
             String position = String.valueOf(Player.Position.valueOf(positionTextField.getText()));
             String username = userNameTextField.getText();
             String password = passwordTextField.getText();
 
+            if (!firstname.isEmpty() && !surname.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
+                DBHandler dbHandler = new DBHandler();
+                dbHandler.addPlayerToDB(firstname, surname, position, username, password, "MalmöFF");
+                ControllerGuest viewPlayer = new ControllerGuest();
+                viewPlayer.viewPlayers(playersInTheTeamTextArea);
+
+                DataStorage.getInstance().UpdatePlayerStorage();
+            }
+            else {
+                throw new NullPointerException("Everything was not filled in");
+            }
+        } catch (Exception e) {
+            createErrorDialog("Please fill in everything", "Error", "Fill in everything!");
+        }
+    }
+
+
+    public void deletePlayerFromDB() {
+        try {
             DBHandler dbHandler = new DBHandler();
-            dbHandler.addPlayerToDB(firstname,surname,position,username,password,"MalmöFF");
+            int index = Integer.parseInt(removePlayerIDTextField.getText());
+            dbHandler.deletePlayerFromDB(index);
+            ControllerGuest viewPlayer = new ControllerGuest();
+            viewPlayer.viewPlayers(playersInTheTeamTextArea);
 
-            DataStorage.getInstance().UpdatePlayerStorage();
 
-
-        } catch (NullPointerException ex){
+        } catch (InputMismatchException ex) {
             Alert dialog = new Alert(Alert.AlertType.ERROR);
             dialog.setTitle("Error");
             dialog.setHeaderText("Error:");
-            dialog.setContentText("You did not enter all the required information.");
+            dialog.setContentText("Your input was invalid.");
             dialog.showAndWait();
         }
-
-
-
     }
-
 
 
 }

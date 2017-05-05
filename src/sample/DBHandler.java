@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 
-
-
 public class DBHandler {
     private final String dbName;
     private final String user;
@@ -108,20 +106,12 @@ public class DBHandler {
     public void setMatchResultToDB(String date, String opponent, String result) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
 
-<<<<<<< HEAD
-=======
+
             PreparedStatement pstm = conn.prepareStatement("UPDATE `match` SET `Result`=? WHERE `Date`=? AND `Opponents`=?");
             pstm.setString(1, result);
             pstm.setString(2, date);
             pstm.setString(3, opponent);
             pstm.executeUpdate();
->>>>>>> a7c328e69a2122a8ebcc7cbd6be9a5b0bfb33fbe
-
-                    PreparedStatement pstm = conn.prepareStatement("UPDATE `match` SET `Result`=? WHERE `Date`=? AND `Opponents`=?");
-                    pstm.setString(1, result);
-                    pstm.setString(2, date);
-                    pstm.setString(3, opponent);
-                    pstm.executeUpdate();
 
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -238,7 +228,8 @@ public class DBHandler {
             while (rs.next()) {
                 String s1 = rs.getString("Surname");
                 String s2 = rs.getString("Firstname");
-                s = s1 + " " + s2 + "\n";
+                int id = Integer.parseInt(rs.getString("PlayerID"));
+                s = "[ " + id + " ]"+ s1 + " " + s2 + "\n";
                 playerList.add(s);
 
             }
@@ -344,6 +335,7 @@ public class DBHandler {
         return isDuplicate;
 
     }
+
 
 }
 
