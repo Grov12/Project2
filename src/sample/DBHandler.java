@@ -35,7 +35,7 @@ public class DBHandler {
     public void printAll() {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
             Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM team");
+            ResultSet rs = statement.executeQuery("SELECT * FROM `team");
 
             while (rs.next()) {
                 System.out.printf("%s%n", rs.getString("Name"));
@@ -149,7 +149,7 @@ public class DBHandler {
     public void viewTrainingDB() {
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM training");
+            ResultSet rs = statement.executeQuery("SELECT * FROM `training");
             while (rs.next()) {
                 System.out.println(rs.getString("TrainingID"));
 
@@ -164,7 +164,7 @@ public class DBHandler {
     public void viewMatchDB() {
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM match");
+            ResultSet rs = statement.executeQuery("SELECT * FROM `match");
             while (rs.next()) {
                 System.out.println(rs.getString("MatchID"));
 
@@ -181,7 +181,7 @@ public class DBHandler {
         String m = null;
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM player"); //Implement the correct table
+            ResultSet rs = statement.executeQuery("SELECT * FROM `player"); //Implement the correct table
             while (rs.next()) {
                 String s1 = rs.getString("Surname");
                 String s2 = rs.getString("Firstname");
@@ -224,7 +224,7 @@ public class DBHandler {
         String s = null;
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM player"); //Implement the correct table
+            ResultSet rs = statement.executeQuery("SELECT * FROM `player"); //Implement the correct table
             while (rs.next()) {
                 String s1 = rs.getString("Surname");
                 String s2 = rs.getString("Firstname");
@@ -242,7 +242,7 @@ public class DBHandler {
     public void viewTeamDB() {
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM team"); //Implement the correct table
+            ResultSet rs = statement.executeQuery("SELECT * FROM `team"); //Implement the correct table
             while (rs.next()) {
                 System.out.println(rs.getString("CoachUsername"));
 
@@ -281,7 +281,7 @@ public class DBHandler {
 
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * from player");
+            ResultSet rs = statement.executeQuery("SELECT * from `player`");
 
             while (rs.next()) {
                 String name = rs.getString("Firstname");
