@@ -4,10 +4,7 @@ package sample;
 import java.io.FileInputStream;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Properties;
-
-
 
 
 public class DBHandler {
@@ -38,7 +35,7 @@ public class DBHandler {
     public void printAll() {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
             Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM team");
+            ResultSet rs = statement.executeQuery("SELECT * FROM `team");
 
             while (rs.next()) {
                 System.out.printf("%s%n", rs.getString("Name"));
@@ -109,16 +106,19 @@ public class DBHandler {
     public void setMatchResultToDB(String date, String opponent, String result) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
 
+
             PreparedStatement pstm = conn.prepareStatement("UPDATE `match` SET `Result`=? WHERE `Date`=? AND `Opponents`=?");
             pstm.setString(1, result);
             pstm.setString(2, date);
             pstm.setString(3, opponent);
             pstm.executeUpdate();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
 
     public boolean handleLoginCoach(String userName, String password) {
         boolean result = false;
@@ -149,7 +149,7 @@ public class DBHandler {
     public void viewTrainingDB() {
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM training");
+            ResultSet rs = statement.executeQuery("SELECT * FROM `training`");
             while (rs.next()) {
                 System.out.println(rs.getString("TrainingID"));
 
@@ -164,7 +164,7 @@ public class DBHandler {
     public void viewMatchDB() {
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM match");
+            ResultSet rs = statement.executeQuery("SELECT * FROM `match`");
             while (rs.next()) {
                 System.out.println(rs.getString("MatchID"));
 
@@ -176,34 +176,47 @@ public class DBHandler {
         }
     }
 
-    public void viewPlayerStatisticsDB() {
+    public ArrayList<String> viewPlayerStatisticsDB() {
+        ArrayList<String> playerStatistic = new ArrayList<>();
+        String m = null;
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM player "); //Implement the correct table
+            ResultSet rs = statement.executeQuery("SELECT * FROM `player`"); //Implement the correct table
             while (rs.next()) {
-                System.out.println(rs.getString("PlayerID"));
+                String s1 = rs.getString("Surname");
+                String s2 = rs.getString("Firstname");
+                String s3 = rs.getString("GoalsScored");
+                String s4 = rs.getString("Yellowcards");
+                String s5 = rs.getString("Redcards");
+                m = s1 + " " + s2 + " "+ s3 + " " + s4 + " " + s5+"\n";
+                playerStatistic.add(m);
 
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return playerStatistic;
     }
 
-    public void viewMatchStatisticsDB() {
+    public ArrayList<String> viewMatchStatisticsDB() {
+        ArrayList<String> matchStatistic = new ArrayList<>();
+        String m = null;
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM match"); //Implement the correct table
+            ResultSet rs = statement.executeQuery("SELECT * FROM `match`"); //Implement the correct table
             while (rs.next()) {
-                System.out.println(rs.getString("MatchID"));
+                String s1 = rs.getString("MatchID");
+                String s2 = rs.getString("Date");
+                String s3 = rs.getString("Opponents");
+                String s4 = rs.getString("Result");
+                m = s1 + " " + s2 + " "+ s3 + " " + s4 + " " + "\n";
+                matchStatistic.add(m);
 
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return matchStatistic;
     }
 
     public ArrayList<String> viewPlayersDB() {
@@ -211,11 +224,12 @@ public class DBHandler {
         String s = null;
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM player"); //Implement the correct table
+            ResultSet rs = statement.executeQuery("SELECT * FROM `player`"); //Implement the correct table
             while (rs.next()) {
                 String s1 = rs.getString("Surname");
                 String s2 = rs.getString("Firstname");
-                s = s1 + " " + s2 + "\n";
+                int id = Integer.parseInt(rs.getString("PlayerID"));
+                s = "[ " + id + " ]"+ s1 + " " + s2 + "\n";
                 playerList.add(s);
 
             }
@@ -228,7 +242,7 @@ public class DBHandler {
     public void viewTeamDB() {
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM match"); //Implement the correct table
+            ResultSet rs = statement.executeQuery("SELECT * FROM `team`"); //Implement the correct table
             while (rs.next()) {
                 System.out.println(rs.getString("CoachUsername"));
 
@@ -267,7 +281,7 @@ public class DBHandler {
 
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * from player");
+            ResultSet rs = statement.executeQuery("SELECT * from `player`");
 
             while (rs.next()) {
                 String name = rs.getString("Firstname");
@@ -321,6 +335,7 @@ public class DBHandler {
         return isDuplicate;
 
     }
+
 
 }
 

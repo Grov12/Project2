@@ -52,7 +52,6 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
             var7.printStackTrace();
         }
 
-       ;
 
     }
 
@@ -77,11 +76,11 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
             }
 
             if (choiceBoxView.getValue().equals("View Player Statistics")){
-                viewPlayerStatistics();
+                viewPlayerStatistics(playerTextArea);
             }
 
             if (choiceBoxView.getValue().equals("View Match Statistics")){
-                viewMatchStatistics();
+                viewMatchStatistics(playerTextArea);
             }
 
             if (choiceBoxView.getValue().equals("View Training")){

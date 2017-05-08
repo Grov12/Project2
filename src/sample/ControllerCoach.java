@@ -98,11 +98,11 @@ public class ControllerCoach extends ControllerPlayer  {
         }
 
         if (choiceBox.getValue().equals("View Player Statistics")){
-            viewPlayerStatistics();
+            viewPlayerStatistics(coachTextArea);
         }
 
         if (choiceBox.getValue().equals("View Match Statistics")){
-            viewMatchStatistics();
+            viewMatchStatistics(coachTextArea);
         }
 
         if (choiceBox.getValue().equals("View Training")){
