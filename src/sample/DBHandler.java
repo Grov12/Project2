@@ -49,7 +49,7 @@ public class DBHandler {
 
 
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO `player` (Firstname,Surname,Playerposition,Username,team_name,Password) VALUE (?,?,?,?,?,?)");
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO player (Firstname,Surname,Playerposition,Username,team_name,Password) VALUE (?,?,?,?,?,?)");
             pstmt.setString(1, name);
             pstmt.setString(2, surName);
             pstmt.setString(3, position);
@@ -67,7 +67,7 @@ public class DBHandler {
 
     public void deletePlayerFromDB(int index) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
-            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM `player WHERE PlayerID=" + index);
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM player WHERE PlayerID=" + index);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -181,7 +181,7 @@ public class DBHandler {
         String m = null;
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM `player`"); //Implement the correct table
+            ResultSet rs = statement.executeQuery("SELECT * FROM player"); //Implement the correct table
             while (rs.next()) {
                 String s1 = rs.getString("Surname");
                 String s2 = rs.getString("Firstname");
@@ -224,7 +224,7 @@ public class DBHandler {
         String s = null;
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM `player`"); //Implement the correct table
+            ResultSet rs = statement.executeQuery("SELECT * FROM player"); //Implement the correct table
             while (rs.next()) {
                 String s1 = rs.getString("Surname");
                 String s2 = rs.getString("Firstname");
@@ -281,7 +281,7 @@ public class DBHandler {
 
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * from `player`");
+            ResultSet rs = statement.executeQuery("SELECT * from player");
 
             while (rs.next()) {
                 String name = rs.getString("Firstname");
