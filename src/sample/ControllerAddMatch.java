@@ -7,14 +7,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.InputMismatchException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -33,9 +31,19 @@ public class ControllerAddMatch extends ControllerMain {
     private Button backButton;
     @FXML
     private Button addMatchButton;
+    @FXML
+    private Button removeMatchButton;
+    @FXML
+    private TextArea matchView;
+    @FXML
+    private TextField textDeleteMatch;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ControllerGuest viewMatches = new ControllerGuest();
+        viewMatches.viewMatches(matchView);
 
     }
 
@@ -58,6 +66,8 @@ public class ControllerAddMatch extends ControllerMain {
                 DBHandler db = new DBHandler();
                 String opponent = opponentTextField.getText();
                 String date = dateTextField.getText();
+                ControllerGuest viewMatches = new ControllerGuest();
+                viewMatches.viewMatches(matchView);
 
 
                 if (db.doesMatchEntryExist(date,opponent)) {
@@ -80,7 +90,13 @@ public class ControllerAddMatch extends ControllerMain {
             }
         }
 
+        if (source == removeMatchButton) {
+            deleteMatchFromDB();
+        }
+
     }
+
+
 
     private void isDateFormatRight() throws Exception {
         //balbalab
@@ -131,4 +147,27 @@ public class ControllerAddMatch extends ControllerMain {
 
 
     }
-}
+    public void deleteMatchFromDB(){
+        try {
+            DBHandler dbHandler = new DBHandler();
+            int id = Integer.parseInt(textDeleteMatch.getText());
+            dbHandler.removeMatchFromDB(id);
+            ControllerGuest viewMatches = new ControllerGuest();
+            viewMatches.viewMatches(matchView);
+
+
+
+
+        } catch (InputMismatchException ex) {
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("Error");
+            dialog.setHeaderText("Error:");
+            dialog.setContentText("Your input was invalid.");
+            dialog.showAndWait();
+        }
+
+    }
+
+
+
+    }
