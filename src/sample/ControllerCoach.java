@@ -89,7 +89,7 @@ public class ControllerCoach extends ControllerPlayer  {
         }
 
         if (choiceBox.getValue().equals("View Matches")){
-            viewMatches();
+            viewMatches(coachTextArea);
         }
 
         if (choiceBox.getValue().equals("View Players")){
@@ -105,7 +105,7 @@ public class ControllerCoach extends ControllerPlayer  {
         }
 
         if (choiceBox.getValue().equals("View Training")){
-            viewTraining();
+            viewTraining(coachTextArea);
 
 
         }

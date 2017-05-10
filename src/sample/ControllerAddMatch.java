@@ -59,9 +59,9 @@ public class ControllerAddMatch extends ControllerMain {
                 String opponent = opponentTextField.getText();
                 String date = dateTextField.getText();
 
-                duplicatesDoExistInDB(opponent,date);
+                duplicatesDoExistInDB(date,opponent);
 
-                if (db.doesMatchEntryExist(opponent, date)) {
+                if (db.doesMatchEntryExist(date, opponent)) {
 
                 }
 

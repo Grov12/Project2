@@ -80,7 +80,7 @@ public class ControllerGuest extends ControllerMain  {
         }
 
         if (choiceBox.getValue().equals("View Matches")){
-            viewMatches();
+            viewMatches(guestTextArea);
         }
 
         if (choiceBox.getValue().equals("View Players")){
@@ -97,6 +97,7 @@ public class ControllerGuest extends ControllerMain  {
         }
 
         if (choiceBox.getValue().equals("View Training")){
+            viewTraining(guestTextArea);
 
         }
 
@@ -113,17 +114,32 @@ public class ControllerGuest extends ControllerMain  {
 
     }
 
-    public static void viewMatches() {
-        DBHandler dbView = new DBHandler();
-        dbView.viewMatchDB();
+    public void viewMatches(TextArea text) {
+        try{
+            DBHandler dbView = new DBHandler();
+            text.setText(String.valueOf(dbView.viewMatchDB()).replace("[", "").replace("]", "").replace(",", ""));
+        }catch (Exception e){
+
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("Error");
+            dialog.setHeaderText("Error:");
+            dialog.setContentText("Something went wrong when loading Matches");
+            dialog.showAndWait();
+
+        }
     }
 
     public void viewPlayers(TextArea tx) {
         try {
             DBHandler dbView = new DBHandler();
-            tx.setText(String.valueOf(dbView.viewPlayersDB()).toString().replace("[", "").replace("]", "").replace(",", ""));
+            tx.setText(String.valueOf(dbView.viewPlayersDB()).replace("[", "").replace("]", "").replace(",", ""));
         }catch (Exception e) {
-            System.out.println("Something went wrong");
+
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("Error");
+            dialog.setHeaderText("Error:");
+            dialog.setContentText("Something went wrong when loading Players");
+            dialog.showAndWait();
         }
 
 
@@ -163,9 +179,20 @@ public class ControllerGuest extends ControllerMain  {
 
     }
 
-    public static void viewTraining(){
-        DBHandler dbView = new DBHandler();
-        dbView.viewTrainingDB();
+    public void viewTraining(TextArea text){
+        try {
+            DBHandler dbView = new DBHandler();
+            text.setText(String.valueOf(dbView.viewTrainingDB()).replace("[", "").replace("]", "").replace(",", ""));
+
+        } catch (Exception e){
+
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("Error");
+            dialog.setHeaderText("Error:");
+            dialog.setContentText("Something went wrong when loading Training");
+            dialog.showAndWait();
+
+        }
 
     }
 

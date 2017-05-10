@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 public class ControllerAttendTraining extends ControllerMain implements Initializable {
 
     @FXML
-    private TextField textNameAttend;
+    private TextField playerIDAttend;
     @FXML
     private TextField textTrainingID;
 
@@ -39,10 +39,22 @@ public class ControllerAttendTraining extends ControllerMain implements Initiali
         }
     }
 
-    @FXML
-    private void saveAttendTraining(){
+    //@FXML
+    //public void saveAttendTraining(){
+        //try{
+            //int playerID = Integer.parseInt(playerIDAttend.getText());
+            //int trainingID = Integer.parseInt(textTrainingID.getText());
+            //DBHandler db = new DBHandler();
+            //db.attendTrainingDB(playerID, trainingID);
+
+
+        //}finally {
+
+        //}
+
+
 
 
     }
 
-}
+

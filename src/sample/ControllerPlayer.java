@@ -68,7 +68,7 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
             }
 
             if (choiceBoxView.getValue().equals("View Matches")){
-                viewMatches();
+                viewMatches(playerTextArea);
             }
 
             if (choiceBoxView.getValue().equals("View Players")){
@@ -84,7 +84,7 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
             }
 
             if (choiceBoxView.getValue().equals("View Training")){
-                viewTraining();
+                viewTraining(playerTextArea);
 
 
             }

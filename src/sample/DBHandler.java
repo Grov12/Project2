@@ -146,27 +146,43 @@ public class DBHandler {
         return result;
     }
 
-    public void viewTrainingDB() {
+    public ArrayList<String> viewTrainingDB() {
+        ArrayList<String> viewTraining = new ArrayList<>();
+        String m = null;
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM `training`");
             while (rs.next()) {
-                System.out.println(rs.getString("TrainingID"));
+                String s1 = rs.getString("TrainingID");
+                String s2 = rs.getString("Time");
+                String s3 = rs.getString("Date");
+                m = "TrainingID: " + s1 + " |Time: " + s2 + " |Date: " + s3 + "\n";
+
+                viewTraining.add(m);
 
             }
 
-
-        } catch (SQLException e) {
+            } catch (SQLException e) {
             e.printStackTrace();
         }
+        return viewTraining;
+
+
+
     }
 
-    public void viewMatchDB() {
+    public ArrayList<String> viewMatchDB() {
+        ArrayList<String> matchList = new ArrayList<>();
+        String m = null;
         try (Connection connection = DriverManager.getConnection(connectionURL)) {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM `match`");
+            ResultSet rs = statement.executeQuery("SELECT `MatchID`, `Date`, `Opponents` FROM `match`");
             while (rs.next()) {
-                System.out.println(rs.getString("MatchID"));
+                String s1 = rs.getString("MatchID");
+                String s2 = rs.getString("Date");
+                String s3 = rs.getString("Opponents");
+                m = "MatchID: " + s1 + " |Date: " + s2 + " |Opponents: " + s3 + "\n";
+                matchList.add(m);
 
             }
 
@@ -174,6 +190,7 @@ public class DBHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return matchList;
     }
 
     public ArrayList<String> viewPlayerStatisticsDB() {
@@ -209,7 +226,7 @@ public class DBHandler {
                 String s2 = rs.getString("Date");
                 String s3 = rs.getString("Opponents");
                 String s4 = rs.getString("Result");
-                m = s1 + " " + s2 + " "+ s3 + " " + s4 + " " + "\n";
+                m = "MatchID: " + s1 + " |Date: " + s2 + " |Opponents: "+ s3 + " |Result: " + s4 + "\n";
                 matchStatistic.add(m);
 
             }
@@ -335,6 +352,23 @@ public class DBHandler {
         return isDuplicate;
 
     }
+
+    //public void attendTrainingDB(int playerID, int trainingID) {
+
+
+
+        //try (Connection connection = DriverManager.getConnection(connectionURL)) {
+            //PreparedStatement pstm = connection.prepareStatement("INSERT into `player_has_training` " +
+                   // "(player_PlayerID,player_team_Name,training_TrainingID) VALUE (?,?,?)");
+            //pstm.setInt(1, playerID);
+            //pstm.setInt(2, trainingID);
+            //pstm.executeUpdate();
+
+        //} catch (SQLException ex){
+            //ex.printStackTrace();
+        //}
+
+    //}
 
 
 }
