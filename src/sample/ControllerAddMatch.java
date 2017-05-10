@@ -59,14 +59,24 @@ public class ControllerAddMatch extends ControllerMain {
                 String opponent = opponentTextField.getText();
                 String date = dateTextField.getText();
 
-                duplicatesDoExistInDB(date,opponent);
 
-                if (db.doesMatchEntryExist(date, opponent)) {
-
+                if (db.doesMatchEntryExist(date,opponent)) {
+                    duplicatesDoExistInDB(date,opponent);
+                }else {
+                    //if a result is entered add it to the database
+                    if (!resultTextField.getText().isEmpty()) {
+                        isResultFormatRight(resultTextField.getText());
+                        db.addMatchToDB(date, opponent);
+                        String result = resultTextField.getText();
+                        db.setMatchResultToDB(date, opponent, result);
+                    }else {
+                    db.addMatchToDB(date, opponent);
+                    }
                 }
 
-            } catch (NullPointerException ex) {
-                createInformationDialog("Error", "Error", "You did not enter all the required information");
+
+            } catch(Exception ex)  {
+                createInformationDialog("Error", "Error", "You did not enter all the required information in the right format");
             }
         }
 
@@ -80,8 +90,22 @@ public class ControllerAddMatch extends ControllerMain {
 
     }
 
-    // This Method ask user if he/she wants to add duplicate information into database
+    //Method to see if the result is written in correct format.
+    public void isResultFormatRight(String result)throws Exception{
+        String pattern1 = "\\d\\d"+"-"+"\\d\\d";
+        String pattern2 = "\\d"+"-"+"\\d";
+        String pattern3 = "\\d"+"-"+"\\d\\d";
+        String pattern4 = "\\d\\d"+"-"+"\\d";
 
+        if (result.matches(pattern1)||result.matches(pattern2)||result.matches(pattern3)||result.matches(pattern4)){
+
+        }else {
+            throw new IndexOutOfBoundsException();
+        }
+
+    }
+
+    // This Method ask user if he/she wants to add duplicate information into database
     private void duplicatesDoExistInDB(String date, String opponent) {
 
         try {
@@ -94,20 +118,13 @@ public class ControllerAddMatch extends ControllerMain {
                 db.addMatchToDB(date, opponent);
                 //if a result is entered add it to the database
                 if (!resultTextField.getText().isEmpty()) {
+                    isResultFormatRight(resultTextField.getText());
                     String result = resultTextField.getText();
                     db.setMatchResultToDB(date, opponent, result);
                 }
-
-            } else {
-                db.addMatchToDB(date, opponent);
-                //if a result is entered add it to the database
-                if (!resultTextField.getText().isEmpty()) {
-                    String result = resultTextField.getText();
-                    db.setMatchResultToDB(date, opponent, result);
-                }
-
 
             }
+
         } catch (Exception ae) {
             createInformationDialog("Error", "Error", "Something went wrong");
         }

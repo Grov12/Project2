@@ -272,7 +272,7 @@ public class DBHandler {
     }
 
     //checks if match entry exist in database to prevent duplicate entries
-    public boolean doesMatchEntryExist(String opponent, String date) {
+    public boolean doesMatchEntryExist(String date, String opponent) {
 
         boolean exists = false;
 
