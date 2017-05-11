@@ -100,12 +100,18 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
 
 
     // Adding player information to database.
-    public void addPlayer() {
+    private void addPlayer() {
 
         try {
             String enumName = String.valueOf(toggleGroup.getSelectedToggle().getUserData());
             String firstname = firstNameTextField.getText();
+            if (!firstname.matches("[a-zA-ZåÅäÄöÖ]")){
+                throw new InputMismatchException("Your input was invalid.");
+            }
             String surname = surNameTextField.getText();
+            if (!surname.matches("[a-zA-ZåÅäÄöÖ]")){
+                throw new InputMismatchException("Your input was invalid.");
+            }
 
             String username = userNameTextField.getText();
             String password = passwordTextField.getText();
@@ -127,7 +133,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
         }
     }
     // Deleting player information from database.
-    public void deletePlayerFromDB() {
+    private void deletePlayerFromDB() {
         try {
             DBHandler dbHandler = new DBHandler();
             int index = Integer.parseInt(removePlayerIDTextField.getText());
@@ -137,11 +143,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
 
 
         } catch (InputMismatchException ex) {
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setTitle("Error");
-            dialog.setHeaderText("Error:");
-            dialog.setContentText("Your input was invalid.");
-            dialog.showAndWait();
+            createErrorDialog("Error.", "Error:", "Your input was invalid.");
         }
         catch (Exception e) {
             createErrorDialog("Error","Error:","Your input was invalid");

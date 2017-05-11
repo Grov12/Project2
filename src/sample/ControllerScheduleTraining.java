@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
 
@@ -57,7 +58,15 @@ public class ControllerScheduleTraining extends ControllerMain {
             try {
                 DBHandler db = new DBHandler();
                 String date = dateTextField.getText();
+                String pattern = "([1-9]|[0-2][0-9]|[0-3][0-1])/([1-9]|[0-1][0-2])";
+                if (!date.matches(pattern)) {
+                    throw new InputMismatchException();
+                }
+
                 String time = timeTextField.getText();
+                if (!time.matches("\\d{2}:\\d{2}")){
+                    throw new InputMismatchException();
+                }
 
                 if (!db.duplicateTraining(date, time)){
                     db.scheduleTraining(date, time);
@@ -71,6 +80,8 @@ public class ControllerScheduleTraining extends ControllerMain {
 
             } catch (NullPointerException ex) {
                 createErrorDialog("Error", "An error occured.", "You did not enter all the required information.");
+            } catch (InputMismatchException ex){
+                createErrorDialog("Error", "An error occured.", "You did not enter the information in the correct format.");
             }
         }
     }
