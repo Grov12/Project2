@@ -107,7 +107,13 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
         try {
             String enumName = String.valueOf(toggleGroup.getSelectedToggle().getUserData());
             String firstname = firstNameTextField.getText();
+            if (!firstname.matches("[a-zA-Z]")){
+                throw new InputMismatchException("Your input was invalid.");
+            }
             String surname = surNameTextField.getText();
+            if (!surname.matches("[a-zA-Z]")){
+                throw new InputMismatchException("Your input was invalid.");
+            }
 
             String username = userNameTextField.getText();
             String password = passwordTextField.getText();
@@ -139,11 +145,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
 
 
         } catch (InputMismatchException ex) {
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setTitle("Error");
-            dialog.setHeaderText("Error:");
-            dialog.setContentText("Your input was invalid.");
-            dialog.showAndWait();
+            createErrorDialog("Error.", "Error:", "Your input was invalid.");
         }
     }
 
