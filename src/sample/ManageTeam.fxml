@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerManageTeam">
    <children>
-      <Button fx:id="addPlayerButton" layoutX="199.0" layoutY="332.0" mnemonicParsing="false" onAction="#buttonPressed" text="Add Player" />
+      <Button fx:id="addPlayerButton" layoutX="151.0" layoutY="333.0" mnemonicParsing="false" onAction="#buttonPressed" text="Add Player" />
       <Button fx:id="removePlayerButton" layoutX="401.0" layoutY="301.0" mnemonicParsing="false" onAction="#buttonPressed" text="Remove Player" />
       <TextField fx:id="firstNameTextField" layoutX="124.0" layoutY="99.0" />
       <TextField fx:id="surNameTextField" layoutX="124.0" layoutY="142.0" />
@@ -36,5 +36,6 @@
       <Text layoutX="93.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defender" />
       <Text layoutX="151.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Midfielder" />
       <Text layoutX="215.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forward" />
+      <Button fx:id="editPlayer" layoutX="339.0" layoutY="345.0" mnemonicParsing="false" onAction="#buttonPressed" text="Edit Player" />
    </children>
 </AnchorPane>

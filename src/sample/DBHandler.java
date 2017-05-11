@@ -371,7 +371,19 @@ public class DBHandler {
 
     //}
 
+    public void editPlayer(int playerID, int yellowCard, int redCard, int goalsScored) {
+        try (Connection conn = DriverManager.getConnection(connectionURL)) {
 
+            PreparedStatement pstm = conn.prepareStatement("UPDATE `player` SET GoalsScored=?, Yellowcards=?, Redcards=? WHERE PlayerID=" + playerID);
+            pstm.setInt(1, goalsScored);
+            pstm.setInt(2, yellowCard);
+            pstm.setInt(3, redCard);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 

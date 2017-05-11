@@ -47,6 +47,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
     @FXML private RadioButton radioButton3;
     @FXML private RadioButton radioButton4;
     @FXML private ToggleGroup toggleGroup = new ToggleGroup();
+    @FXML private Button editPlayer;
 
 
     @Override
@@ -73,7 +74,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
         }
 
         @FXML
-        private void buttonPressed (ActionEvent ae){
+        private void buttonPressed (ActionEvent ae) throws IOException {
 
             Button source = (Button) ae.getSource();
 
@@ -83,6 +84,9 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
+            }
+            if (source == editPlayer) {
+                changeScene(ae,"EditPlayerScene.fxml");
             }
 
             if (source == addPlayerButton) {
@@ -135,8 +139,6 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             dbHandler.deletePlayerFromDB(index);
             ControllerGuest viewPlayer = new ControllerGuest();
             viewPlayer.viewPlayers(playersInTheTeamTextArea);
-
-
 
 
         } catch (InputMismatchException ex) {
