@@ -10,9 +10,9 @@
       <Text layoutX="211.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report Abscene Training" />
       <Button layoutX="471.0" layoutY="322.0" mnemonicParsing="false" onAction="#saveAbsenceData" prefHeight="28.0" prefWidth="81.0" text="Save" />
       <Button layoutX="49.0" layoutY="323.0" mnemonicParsing="false" onAction="#playerLogout" prefHeight="17.0" prefWidth="80.0" text="Logout" />
-      <TextField fx:id="textNameTraining" layoutX="203.0" layoutY="106.0" />
-      <TextField fx:id="textTrainingID" layoutX="203.0" layoutY="221.0" />
-      <Text layoutX="256.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Firstname" />
+      <TextField fx:id="playerIDAbsence" layoutX="203.0" layoutY="106.0" />
+      <TextField fx:id="trrainingIDAbsence" layoutX="203.0" layoutY="221.0" />
+      <Text layoutX="256.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PlayerID" />
       <Text layoutX="253.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Training ID" />
    </children>
 </AnchorPane>
