@@ -38,6 +38,8 @@ public class ControllerAttendTraining extends ControllerMain implements Initiali
             var7.printStackTrace();
         }
     }
+   // @FXML
+   // private void
 
     //@FXML
     //public void saveAttendTraining(){
