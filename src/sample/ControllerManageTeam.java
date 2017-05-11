@@ -31,8 +31,6 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
     @FXML
     private TextField surNameTextField;
     @FXML
-    private TextField positionTextField;
-    @FXML
     private TextField userNameTextField;
     @FXML
     private TextField passwordTextField;
@@ -146,6 +144,9 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
 
         } catch (InputMismatchException ex) {
             createErrorDialog("Error.", "Error:", "Your input was invalid.");
+        }
+        catch (Exception e) {
+            createErrorDialog("Error","Error:","Your input was invalid");
         }
     }
 
