@@ -25,36 +25,29 @@ public class ControllerAttendTraining extends ControllerMain implements Initiali
     private TextField textTrainingID;
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
     @FXML
     private void playerLogout(ActionEvent ae) {
         try {
-            changeScene(ae , "PlayerScene.fxml");
+            changeScene(ae, "PlayerScene.fxml");
         } catch (IOException var7) {
             var7.printStackTrace();
         }
     }
 
-    //@FXML
-    //public void saveAttendTraining(){
-        //try{
-            //int playerID = Integer.parseInt(playerIDAttend.getText());
-            //int trainingID = Integer.parseInt(textTrainingID.getText());
-            //DBHandler db = new DBHandler();
-            //db.attendTrainingDB(playerID, trainingID);
-
-
-        //}finally {
-
-        //}
-
-
+    @FXML
+    public void saveAttendTraining() {
+        int playerID = Integer.parseInt(playerIDAttend.getText());
+        int trainingID = Integer.parseInt(textTrainingID.getText());
+        DBHandler db = new DBHandler();
+        db.attendTrainingDB(playerID, "MalmöFF", trainingID);
 
 
     }
+}
 
 

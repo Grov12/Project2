@@ -1,6 +1,8 @@
 package sample;
 
 
+import javafx.scene.control.Alert;
+
 import java.io.FileInputStream;
 import java.sql.*;
 import java.util.ArrayList;
@@ -353,22 +355,27 @@ public class DBHandler {
 
     }
 
-    //public void attendTrainingDB(int playerID, int trainingID) {
+    public void attendTrainingDB(int playerID, String team, int trainingID) {
 
 
 
-        //try (Connection connection = DriverManager.getConnection(connectionURL)) {
-            //PreparedStatement pstm = connection.prepareStatement("INSERT into `player_has_training` " +
-                   // "(player_PlayerID,player_team_Name,training_TrainingID) VALUE (?,?,?)");
-            //pstm.setInt(1, playerID);
-            //pstm.setInt(2, trainingID);
-            //pstm.executeUpdate();
+        try (Connection connection = DriverManager.getConnection(connectionURL)) {
+            PreparedStatement pstm = connection.prepareStatement("INSERT into `player_has_training` " +
+                    "(player_PlayerID,player_team_Name,training_TrainingID) VALUE (?,?,?)");
+            pstm.setInt(1, playerID);
+            pstm.setString(2, team );
+            pstm.setInt(3, trainingID);
+            pstm.executeUpdate();
 
-        //} catch (SQLException ex){
-            //ex.printStackTrace();
-        //}
+        } catch (SQLException ex){
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("Error");
+            dialog.setHeaderText("Error:");
+            dialog.setContentText("PlayerID or TrainingID doesn't exists in database");
+            dialog.showAndWait();
+        }
 
-    //}
+    }
 
 
 }
