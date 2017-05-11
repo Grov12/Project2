@@ -100,7 +100,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
 
 
     // Adding player information to database.
-    public void addPlayer() {
+    private void addPlayer() {
 
         try {
             String enumName = String.valueOf(toggleGroup.getSelectedToggle().getUserData());
@@ -133,7 +133,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
         }
     }
     // Deleting player information from database.
-    public void deletePlayerFromDB() {
+    private void deletePlayerFromDB() {
         try {
             DBHandler dbHandler = new DBHandler();
             int index = Integer.parseInt(removePlayerIDTextField.getText());

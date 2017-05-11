@@ -27,10 +27,8 @@ public class ControllerReportAbsence extends ControllerMain implements Initializ
     @FXML
     private TextField playerIDAbsence;
     @FXML
-
     private TextField trainingIDAbsence;
 
-    private TextField textTrainingID;
     @FXML
     private TextArea textAreaTraining;
 
