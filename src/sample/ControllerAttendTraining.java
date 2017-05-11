@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -23,17 +24,21 @@ public class ControllerAttendTraining extends ControllerMain implements Initiali
     private TextField playerIDAttend;
     @FXML
     private TextField textTrainingID;
-
+    @FXML
+    TextArea textAreaTraining;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ControllerGuest viewTraining = new ControllerGuest();
+        viewTraining.viewTraining(textAreaTraining);
 
     }
+
     @FXML
     private void playerLogout(ActionEvent ae) {
         try {
-            changeScene(ae , "PlayerScene.fxml");
+            changeScene(ae, "PlayerScene.fxml");
         } catch (IOException var7) {
             var7.printStackTrace();
         }
@@ -41,22 +46,15 @@ public class ControllerAttendTraining extends ControllerMain implements Initiali
    // @FXML
    // private void
 
-    //@FXML
-    //public void saveAttendTraining(){
-        //try{
-            //int playerID = Integer.parseInt(playerIDAttend.getText());
-            //int trainingID = Integer.parseInt(textTrainingID.getText());
-            //DBHandler db = new DBHandler();
-            //db.attendTrainingDB(playerID, trainingID);
-
-
-        //}finally {
-
-        //}
-
-
+    @FXML
+    public void saveAttendTraining() {
+        int playerID = Integer.parseInt(playerIDAttend.getText());
+        int trainingID = Integer.parseInt(textTrainingID.getText());
+        DBHandler db = new DBHandler();
+        db.attendTrainingDB(playerID, "MalmöFF", trainingID);
 
 
     }
+}
 
 

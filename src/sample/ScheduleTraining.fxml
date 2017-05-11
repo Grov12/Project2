@@ -5,12 +5,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerScheduleTraining">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerScheduleTraining">
    <children>
       <Button fx:id="addButton" layoutX="109.0" layoutY="243.0" mnemonicParsing="false" onAction="#buttonPressed" text="Add training" />
       <TextField fx:id="dateTextField" layoutX="83.0" layoutY="134.0" promptText="Date" />
       <TextField fx:id="timeTextField" layoutX="83.0" layoutY="188.0" promptText="Time" />
-      <TextArea fx:id="scheduleTrainArea" editable="false" layoutX="336.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" text="&#10;" />
+      <TextArea fx:id="scheduleTrainArea" editable="false" layoutX="266.0" layoutY="38.0" prefHeight="346.0" prefWidth="324.0" text="&#10;" />
       <Button fx:id="backButton" layoutX="117.0" layoutY="315.0" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="25.0" prefWidth="67.0" text="Back" />
    </children>
 </AnchorPane>
