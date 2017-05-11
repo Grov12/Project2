@@ -101,9 +101,6 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
     public void addPlayer() {
 
         try {
-
-            System.out.println(toggleGroup.getSelectedToggle().getUserData().toString());
-
             String enumName = String.valueOf(toggleGroup.getSelectedToggle().getUserData());
             String firstname = firstNameTextField.getText();
             String surname = surNameTextField.getText();
