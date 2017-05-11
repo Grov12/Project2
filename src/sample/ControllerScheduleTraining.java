@@ -30,18 +30,22 @@ public class ControllerScheduleTraining extends ControllerMain {
     private Button backButton;
     @FXML
     private Button addButton;
+    @FXML
+    private TextArea scheduleTrainArea;
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
+        ControllerGuest viewTraining = new ControllerGuest();
+        viewTraining.viewTraining(scheduleTrainArea);
 
     }
 
     @FXML
     private void buttonPressed(ActionEvent ae) {
+
+        ControllerGuest viewTraining = new ControllerGuest();
 
         Button source = (Button) ae.getSource();
 
@@ -76,6 +80,8 @@ public class ControllerScheduleTraining extends ControllerMain {
                         db.scheduleTraining(date, time);
                     }
                 }
+
+                viewTraining.viewTraining(scheduleTrainArea);
 
 
             } catch (NullPointerException ex) {
