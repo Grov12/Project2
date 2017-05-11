@@ -51,7 +51,6 @@ public class DataStorage {
         return teamList;
     }
 
-
     public int getPlayerID() {
         return playerID;
     }
@@ -59,7 +58,6 @@ public class DataStorage {
     public void setPlayerID(int playerID) {
         this.playerID = playerID;
     }
-
 
     public void UpdatePlayerStorage() {
         playerList.clear();
