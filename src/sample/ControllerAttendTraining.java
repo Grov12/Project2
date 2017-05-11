@@ -25,14 +25,14 @@ public class ControllerAttendTraining extends ControllerMain implements Initiali
     @FXML
     private TextField textTrainingID;
     @FXML
-    TextArea textAreaTraining;
+    private TextArea textAreaTraining;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ControllerGuest viewTraining = new ControllerGuest();
         viewTraining.viewTraining(textAreaTraining);
-
+        playerIDAttend.setText(String.valueOf(DataStorage.getInstance().getPlayerID()));
     }
 
     @FXML
@@ -52,8 +52,8 @@ public class ControllerAttendTraining extends ControllerMain implements Initiali
         int trainingID = Integer.parseInt(textTrainingID.getText());
         DBHandler db = new DBHandler();
         db.attendTrainingDB(playerID, "MalmöFF", trainingID);
-
-
+        ControllerGuest viewTraining = new ControllerGuest();
+        viewTraining.viewTraining(textAreaTraining);
     }
 }
 

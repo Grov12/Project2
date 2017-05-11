@@ -1,8 +1,10 @@
 package sample;
 
 
+import com.sun.org.apache.xml.internal.dtm.DTMAxisTraverser;
 import javafx.scene.control.Alert;
 
+import javax.xml.crypto.Data;
 import java.io.FileInputStream;
 import java.sql.*;
 import java.util.ArrayList;
@@ -121,7 +123,31 @@ public class DBHandler {
                 }
             }
 
+    public boolean handleLoginPlayer(String userName, String password) {
+        boolean result = false;
+        try (Connection conn = DriverManager.getConnection(connectionURL)) {
+            Statement pstm = conn.createStatement();
+            ResultSet rs = pstm.executeQuery("SELECT * FROM player where Username='" + userName + "'and Password='" + password + "'");
+            if (rs.next()) {
+                String checkUser = rs.getString("Username");
+                String checkPass = rs.getString("Password");
+                int playerID = rs.getInt("PlayerID");
 
+
+                if (checkUser.equals(userName) && checkPass.equals(password)) {
+                    result = true;
+                    DataStorage.getInstance().setPlayerID(playerID);
+                } else {
+                    result = false;
+                }
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
     public boolean handleLoginCoach(String userName, String password) {
         boolean result = false;

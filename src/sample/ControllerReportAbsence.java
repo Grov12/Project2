@@ -37,6 +37,7 @@ public class ControllerReportAbsence extends ControllerMain implements Initializ
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ControllerGuest viewTraining = new ControllerGuest();
+        playerIDAbsence.setText(String.valueOf(DataStorage.getInstance().getPlayerID()));
         viewTraining.viewTraining(textAreaTraining);
     }
     @FXML
@@ -58,14 +59,12 @@ public class ControllerReportAbsence extends ControllerMain implements Initializ
             int trainingID = Integer.parseInt(trainingIDAbsence.getText());
             DBHandler dbHandler = new DBHandler();
             dbHandler.playerReportAbsenceDB(playerID, trainingID);
+            ControllerGuest viewTraining = new ControllerGuest();
+            viewTraining.viewTraining(textAreaTraining);
 
         }
         catch (InputMismatchException ex) {
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setTitle("Error");
-            dialog.setHeaderText("Error:");
-            dialog.setContentText("Your input was invalid.");
-            dialog.showAndWait();
+            createInformationDialog("Error","Error","Your input was invalid");
         }
 
 

@@ -12,6 +12,7 @@ public class DataStorage {
     private ArrayList<Training> trainingList;
     private ArrayList<Coach> coachList;
     private ArrayList<Team> teamList;
+    private int playerID;
 
     private static DataStorage instance;
 
@@ -50,9 +51,13 @@ public class DataStorage {
         return teamList;
     }
 
+    public int getPlayerID() {
+        return playerID;
+    }
 
-
-
+    public void setPlayerID(int playerID) {
+        this.playerID = playerID;
+    }
 
     public void UpdatePlayerStorage() {
         playerList.clear();
