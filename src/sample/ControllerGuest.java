@@ -55,24 +55,6 @@ public class ControllerGuest extends ControllerMain  {
 
     }
 
-    /*
-    @FXML
-    private void matchButton(ActionEvent ae){
-        //lägg till kod när vi har connectat till databas.
-        guestTextArea.setText("previous and upcomeing matches.");
-
-    }
-    @FXML
-    private void teamButton(ActionEvent ae){
-        //lägg till kod när vi har connectat till databas.
-        guestTextArea.setText("Names of players.");
-    }
-    @FXML
-    private void statisticButton(ActionEvent ae){
-        //lägg till kod när vi har connectat till databas.
-        guestTextArea.setText("Player and match statistics.");
-    }*/
-
     public void menuOptions() {
 
         if (choiceBox.getValue().equals("View Team")) {

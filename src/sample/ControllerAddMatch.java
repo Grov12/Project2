@@ -52,7 +52,7 @@ public class ControllerAddMatch extends ControllerMain {
 
         Button source = (Button) ae.getSource();
 
-        if (source == backButton) {
+        if (source == backButton) { //Go back to coach scene.
             try {
                 changeScene(ae, "CoachScene.fxml");
             } catch (IOException ex) {

@@ -97,7 +97,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
         }
 
 
-
+    // Adding player information to database.
     public void addPlayer() {
 
         try {
@@ -127,7 +127,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             createErrorDialog("Please fill in everything", "Error", "Fill in everything!");
         }
     }
-
+    // Deleting player information from database.
     public void deletePlayerFromDB() {
         try {
             DBHandler dbHandler = new DBHandler();
