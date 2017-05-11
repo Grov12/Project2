@@ -66,16 +66,18 @@ public class ControllerAddMatch extends ControllerMain {
                 DBHandler db = new DBHandler();
                 String opponent = opponentTextField.getText();
                 String date = dateTextField.getText();
+                isDateFormatRight(date);
+                if (!resultTextField.getText().isEmpty()){
+                    isResultFormatRight(resultTextField.getText());
+                }
                 ControllerGuest viewMatches = new ControllerGuest();
                 viewMatches.viewMatches(matchView);
-
 
                 if (db.doesMatchEntryExist(date,opponent)) {
                     duplicatesDoExistInDB(date,opponent);
                 }else {
                     //if a result is entered add it to the database
                     if (!resultTextField.getText().isEmpty()) {
-                        isResultFormatRight(resultTextField.getText());
                         db.addMatchToDB(date, opponent);
                         String result = resultTextField.getText();
                         db.setMatchResultToDB(date, opponent, result);
@@ -98,24 +100,25 @@ public class ControllerAddMatch extends ControllerMain {
 
 
 
-    private void isDateFormatRight() throws Exception {
-        //balbalab
+    private void isDateFormatRight(String date) throws Exception {
+        String pattern ="([1-9]|[0-2][0-9]|[0-3][0-1])/([1-9]|[0-1][0-2])";
 
-        throw new Exception("fel format");
+        if(!date.matches(pattern)){
+            throw new IndexOutOfBoundsException();
+        }
+
+
+
 
 
     }
 
     //Method to see if the result is written in correct format.
     public void isResultFormatRight(String result)throws Exception{
-        String pattern1 = "\\d\\d"+"-"+"\\d\\d";
-        String pattern2 = "\\d"+"-"+"\\d";
-        String pattern3 = "\\d"+"-"+"\\d\\d";
-        String pattern4 = "\\d\\d"+"-"+"\\d";
 
-        if (result.matches(pattern1)||result.matches(pattern2)||result.matches(pattern3)||result.matches(pattern4)){
+        String pattern = "([0-9]|[1-9][0-9])-([0-9]|[1-9][0-9])";
 
-        }else {
+        if (!result.matches(pattern)){
             throw new IndexOutOfBoundsException();
         }
 

@@ -77,9 +77,10 @@ public class DBHandler {
 
     public void addMatchToDB(String date, String opponent) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
-            PreparedStatement pstm = conn.prepareStatement("INSERT INTO `match` (Date,Opponents) VALUE (?,?)");
+            PreparedStatement pstm = conn.prepareStatement("INSERT INTO `match` (Date,Opponents,Result) VALUE (?,?,?)");
             pstm.setString(1, date);
             pstm.setString(2, opponent);
+            pstm.setString(3,"TBA");
             pstm.executeUpdate();
 
 

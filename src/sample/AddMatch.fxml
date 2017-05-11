@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerAddMatch">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerAddMatch">
    <children>
       <Button fx:id="backButton" layoutX="62.0" layoutY="347.0" mnemonicParsing="false" onAction="#buttonPressed" text="Back to menu" />
       <Button fx:id="addMatchButton" layoutX="70.0" layoutY="233.0" mnemonicParsing="false" onAction="#buttonPressed" text="Add Match" />
       <TextField fx:id="opponentTextField" layoutX="29.0" layoutY="63.0" />
-      <TextField fx:id="dateTextField" layoutX="29.0" layoutY="124.0" />
-      <TextField fx:id="resultTextField" layoutX="29.0" layoutY="187.0" />
+      <TextField fx:id="dateTextField" layoutX="29.0" layoutY="124.0" promptText="dd/mm" />
+      <TextField fx:id="resultTextField" layoutX="29.0" layoutY="187.0" promptText="xx-xx" />
       <Label layoutX="82.0" layoutY="46.0" text="Opponent" />
       <Label layoutX="98.0" layoutY="107.0" text="Date" />
       <Label layoutX="93.0" layoutY="170.0" text="Result" />
