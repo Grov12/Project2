@@ -208,7 +208,7 @@ public class DBHandler {
                 String s3 = rs.getString("GoalsScored");
                 String s4 = rs.getString("Yellowcards");
                 String s5 = rs.getString("Redcards");
-                m = s1 + " " + s2 + " "+ s3 + " " + s4 + " " + s5+"\n";
+                m = "Surname: " + s1 + " | Firstname: " + s2 + " | Goalsscored: "+ s3 + " | Yellowcards: " + s4 + " | Redcards: " + s5+"\n";
                 playerStatistic.add(m);
 
             }
@@ -229,7 +229,7 @@ public class DBHandler {
                 String s2 = rs.getString("Date");
                 String s3 = rs.getString("Opponents");
                 String s4 = rs.getString("Result");
-                m = "MatchID: " + s1 + " |Date: " + s2 + " |Opponents: "+ s3 + " |Result: " + s4 + "\n";
+                m = "MatchID: " + s1 + " | Date: " + s2 + " | Opponents: "+ s3 + " | Result: " + s4 + "\n";
                 matchStatistic.add(m);
 
             }
