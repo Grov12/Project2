@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerCoach">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerCoach">
    <children>
       <Text layoutX="260.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coach Scene" />
-      <Button layoutX="467.0" layoutY="323.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="81.0" text="Continue" />
-      <Button layoutX="49.0" layoutY="323.0" mnemonicParsing="false" onAction="#coachLogout" prefHeight="28.0" prefWidth="73.0" text="Logout" />
+      <Button layoutX="452.0" layoutY="323.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="81.0" text="Continue" />
+      <Button layoutX="38.0" layoutY="323.0" mnemonicParsing="false" onAction="#coachLogout" prefHeight="28.0" prefWidth="73.0" text="Logout" />
       <ChoiceBox fx:id="choiceBox" layoutX="225.0" layoutY="89.0" prefWidth="150.0" />
       <TextArea fx:id="coachTextArea" editable="false" layoutX="127.0" layoutY="127.0" prefHeight="253.0" prefWidth="310.0" />
       <Button fx:id="scheduleTrainingButton" layoutX="443.0" layoutY="89.0" mnemonicParsing="false" onAction="#coachButtonPressed" text="Schedule Training" />

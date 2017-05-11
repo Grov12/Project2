@@ -16,14 +16,18 @@ import java.util.ResourceBundle;
  */
 public class ControllerEditPlayer extends ControllerMain implements Initializable {
 
-    @FXML private TextField textPlayerID;
-    @FXML private TextField textYellowCard;
-    @FXML private TextField textRedCard;
-    @FXML private TextField textGoal;
-    @FXML private Button saveButton;
-    @FXML private Button returnButton;
-    @FXML private TextArea playerView;
-
+    @FXML
+    private TextField textPlayerID;
+    @FXML
+    private TextField textYellowCard;
+    @FXML
+    private TextField textRedCard;
+    @FXML
+    private TextField textGoal;
+    @FXML
+    private Button returnButton;
+    @FXML
+    private TextArea playerView;
 
 
     @Override
@@ -33,23 +37,31 @@ public class ControllerEditPlayer extends ControllerMain implements Initializabl
 
     }
 
-    @FXML private void goBack(ActionEvent ae) {
+    @FXML
+    private void goBack(ActionEvent ae) {
         Button source = (Button) ae.getSource();
         if (source == returnButton) {
             try {
-                changeScene(ae,"ManageTeam.fxml");
+                changeScene(ae, "ManageTeam.fxml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-    @FXML private void saveToDatabase() {
+
+    @FXML
+    private void saveToDatabase() {
+        try {
         int playerID = Integer.parseInt(textPlayerID.getText());
         int yellowCard = Integer.parseInt(textYellowCard.getText());
         int redCard = Integer.parseInt(textRedCard.getText());
         int goalsScored = Integer.parseInt(textGoal.getText());
 
-        DBHandler db = new DBHandler();
-        db.editPlayer(playerID,yellowCard,redCard,goalsScored);
+
+            DBHandler db = new DBHandler();
+            db.editPlayer(playerID, yellowCard, redCard, goalsScored);
+        } catch (Exception e) {
+            createErrorDialog("Error", "Error", "Fill in everything.");
+        }
     }
 }
