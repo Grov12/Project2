@@ -105,11 +105,11 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
         try {
             String enumName = String.valueOf(toggleGroup.getSelectedToggle().getUserData());
             String firstname = firstNameTextField.getText();
-            if (!firstname.matches("[a-zA-Z]")){
+            if (!firstname.matches("[a-zA-ZåÅäÄöÖ]")){
                 throw new InputMismatchException("Your input was invalid.");
             }
             String surname = surNameTextField.getText();
-            if (!surname.matches("[a-zA-Z]")){
+            if (!surname.matches("[a-zA-ZåÅäÄöÖ]")){
                 throw new InputMismatchException("Your input was invalid.");
             }
 
