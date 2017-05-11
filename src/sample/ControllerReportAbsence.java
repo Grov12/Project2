@@ -7,7 +7,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+<<<<<<< HEAD
 import javafx.scene.control.Alert;
+=======
+import javafx.scene.control.TextArea;
+>>>>>>> 651f61406a6b035b0699f46b4e2b7556599ad90d
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -23,12 +27,19 @@ public class ControllerReportAbsence extends ControllerMain implements Initializ
     @FXML
     private TextField playerIDAbsence;
     @FXML
+<<<<<<< HEAD
     private TextField trainingIDAbsence;
+=======
+    private TextField textTrainingID;
+    @FXML
+    private TextArea textAreaTraining;
+>>>>>>> 651f61406a6b035b0699f46b4e2b7556599ad90d
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        ControllerGuest viewTraining = new ControllerGuest();
+        viewTraining.viewTraining(textAreaTraining);
     }
     @FXML
     private void playerLogout(ActionEvent ae) {
