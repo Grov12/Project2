@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import java.util.zip.DataFormatException;
 
 
 public class ControllerMain implements Initializable {
@@ -46,12 +46,14 @@ public class ControllerMain implements Initializable {
                 Alert dialog = new Alert(Alert.AlertType.INFORMATION);
                 dialog.setTitle("Error");
                 dialog.setHeaderText("Error:");
-                dialog.setContentText("Sorry, incorrest password or username");
+                dialog.setContentText("Sorry, incorrect password or username");
                 dialog.showAndWait();
             }
 
         } else if (choiceBox.getValue().equals("Player")) {
             try {
+
+                throwExceptionPlayer();
                 changeScene(ae,"PlayerScene.fxml");
 
             } catch (IOException var7) {
@@ -62,7 +64,10 @@ public class ControllerMain implements Initializable {
                 dialog.setHeaderText("Error:");
                 dialog.setContentText("Both fields must be filled in!");
                 dialog.showAndWait();
-            } catch (Exception e) {
+            }catch(IndexOutOfBoundsException ex){
+                createInformationDialog("Login Failed","Login Falied","Please try again");
+            }
+            catch (Exception e) {
                e.printStackTrace();
             }
 
@@ -124,10 +129,20 @@ public class ControllerMain implements Initializable {
         dialog.setContentText(contentText);
         dialog.showAndWait();
     }
+     @FXML
+     public void throwExceptionPlayer() {
+       DBHandler dbHandler = new DBHandler();
+       boolean tempo = dbHandler.handleLoginPlayer(textUsername.getText(),textPassword.getText());
+      if(tempo == false) {
+
+     throw new IndexOutOfBoundsException();
+      }
+}
 
 
 
-   // @FXML
+
+// @FXML
    // public void throwExceptionsCoach() {
      //   DBHandler dbHandler = new DBHandler();
      //   boolean tempo = dbHandler.handleLoginCoach(textUsername.getText(),textPassword.getText());
