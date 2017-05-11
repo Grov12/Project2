@@ -60,6 +60,7 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
             //Add new scene?
         }
 
+        // Prints the output from selected choiceBox and prints to Text area.
         @FXML
         private void viewBoxPlayer (ActionEvent ae){
             if(choiceBoxView.getValue().equals("View Team")) {

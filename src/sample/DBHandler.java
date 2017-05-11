@@ -79,9 +79,10 @@ public class DBHandler {
 
     public void addMatchToDB(String date, String opponent) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
-            PreparedStatement pstm = conn.prepareStatement("INSERT INTO `match` (Date,Opponents) VALUE (?,?)");
+            PreparedStatement pstm = conn.prepareStatement("INSERT INTO `match` (Date,Opponents,Result) VALUE (?,?,?)");
             pstm.setString(1, date);
             pstm.setString(2, opponent);
+            pstm.setString(3,"TBA");
             pstm.executeUpdate();
 
 
@@ -183,7 +184,7 @@ public class DBHandler {
                 String s1 = rs.getString("MatchID");
                 String s2 = rs.getString("Date");
                 String s3 = rs.getString("Opponents");
-                m = "MatchID: " + s1 + " |Date: " + s2 + " |Opponents: " + s3 + "\n";
+                m = "MatchID: " + s1 + " | Date: " + s2 + " | Opponents: " + s3+"\n";
                 matchList.add(m);
 
             }
@@ -274,7 +275,7 @@ public class DBHandler {
     }
 
     //checks if match entry exist in database to prevent duplicate entries
-    public boolean doesMatchEntryExist(String opponent, String date) {
+    public boolean doesMatchEntryExist(String date, String opponent) {
 
         boolean exists = false;
 

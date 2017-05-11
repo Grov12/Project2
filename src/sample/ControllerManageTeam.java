@@ -8,10 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -45,6 +42,11 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
     private Button removePlayerButton;
     @FXML
     private Button backButton;
+    @FXML private RadioButton radioButton;
+    @FXML private RadioButton radioButton2;
+    @FXML private RadioButton radioButton3;
+    @FXML private RadioButton radioButton4;
+    @FXML private ToggleGroup toggleGroup = new ToggleGroup();
 
 
     @Override
@@ -52,6 +54,19 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
     public void initialize(URL location, ResourceBundle resources) {
             ControllerGuest viewPlayer = new ControllerGuest();
             viewPlayer.viewPlayers(playersInTheTeamTextArea);
+            radioButton.setToggleGroup(toggleGroup);
+            radioButton2.setToggleGroup(toggleGroup);
+            radioButton3.setToggleGroup(toggleGroup);
+            radioButton.setUserData("Goalkeeper");
+            radioButton2.setUserData("Defender");
+            radioButton3.setUserData("Midfielder");
+            radioButton4.setUserData("Forward");
+
+
+
+
+
+
 
 
             // Set the text to all the players in the team.
@@ -82,20 +97,24 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
         }
 
 
-
+    // Adding player information to database.
     public void addPlayer() {
 
         try {
 
+            System.out.println(toggleGroup.getSelectedToggle().getUserData().toString());
+
+            String enumName = String.valueOf(toggleGroup.getSelectedToggle().getUserData());
             String firstname = firstNameTextField.getText();
             String surname = surNameTextField.getText();
-            String position = String.valueOf(Player.Position.valueOf(positionTextField.getText()));
+
             String username = userNameTextField.getText();
             String password = passwordTextField.getText();
 
+
             if (!firstname.isEmpty() && !surname.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
                 DBHandler dbHandler = new DBHandler();
-                dbHandler.addPlayerToDB(firstname, surname, position, username, password, "MalmöFF");
+                dbHandler.addPlayerToDB(firstname, surname, enumName, username, password, "MalmöFF");
                 ControllerGuest viewPlayer = new ControllerGuest();
                 viewPlayer.viewPlayers(playersInTheTeamTextArea);
 
@@ -108,7 +127,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             createErrorDialog("Please fill in everything", "Error", "Fill in everything!");
         }
     }
-
+    // Deleting player information from database.
     public void deletePlayerFromDB() {
         try {
             DBHandler dbHandler = new DBHandler();

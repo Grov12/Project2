@@ -52,7 +52,7 @@ public class ControllerAddMatch extends ControllerMain {
 
         Button source = (Button) ae.getSource();
 
-        if (source == backButton) {
+        if (source == backButton) { //Go back to coach scene.
             try {
                 changeScene(ae, "CoachScene.fxml");
             } catch (IOException ex) {
@@ -66,17 +66,28 @@ public class ControllerAddMatch extends ControllerMain {
                 DBHandler db = new DBHandler();
                 String opponent = opponentTextField.getText();
                 String date = dateTextField.getText();
+                isDateFormatRight(date);
+                if (!resultTextField.getText().isEmpty()){
+                    isResultFormatRight(resultTextField.getText());
+                }
                 ControllerGuest viewMatches = new ControllerGuest();
-                viewMatches.viewMatches(matchView);
 
-                duplicatesDoExistInDB(date,opponent);
-
-                if (db.doesMatchEntryExist(date, opponent)) {
-
+                if (db.doesMatchEntryExist(date,opponent)) {
+                    duplicatesDoExistInDB(date,opponent);
+                }else {
+                    //if a result is entered add it to the database
+                    if (!resultTextField.getText().isEmpty()) {
+                        db.addMatchToDB(date, opponent);
+                        String result = resultTextField.getText();
+                        db.setMatchResultToDB(date, opponent, result);
+                    }else {
+                    db.addMatchToDB(date, opponent);
+                    }
                 }
 
-            } catch (NullPointerException ex) {
-                createInformationDialog("Error", "Error", "You did not enter all the required information");
+                viewMatches.viewMatches(matchView);
+            } catch(Exception ex)  {
+                createInformationDialog("Error", "Error", "You did not enter all the required information in the right format");
             }
         }
 
@@ -88,16 +99,31 @@ public class ControllerAddMatch extends ControllerMain {
 
 
 
-    private void isDateFormatRight() throws Exception {
-        //balbalab
+    private void isDateFormatRight(String date) throws Exception {
+        String pattern ="([1-9]|[0-2][0-9]|[0-3][0-1])/([1-9]|[0-1][0-2])";
 
-        throw new Exception("fel format");
+        if(!date.matches(pattern)){
+            throw new IndexOutOfBoundsException();
+        }
+
+
+
 
 
     }
 
-    // This Method ask user if he/she wants to add duplicate information into database
+    //Method to see if the result is written in correct format.
+    public void isResultFormatRight(String result)throws Exception{
 
+        String pattern = "([0-9]|[1-9][0-9])-([0-9]|[1-9][0-9])";
+
+        if (!result.matches(pattern)){
+            throw new IndexOutOfBoundsException();
+        }
+
+    }
+
+    // This Method ask user if he/she wants to add duplicate information into database
     private void duplicatesDoExistInDB(String date, String opponent) {
 
         try {
@@ -110,20 +136,13 @@ public class ControllerAddMatch extends ControllerMain {
                 db.addMatchToDB(date, opponent);
                 //if a result is entered add it to the database
                 if (!resultTextField.getText().isEmpty()) {
+                    isResultFormatRight(resultTextField.getText());
                     String result = resultTextField.getText();
                     db.setMatchResultToDB(date, opponent, result);
                 }
-
-            } else {
-                db.addMatchToDB(date, opponent);
-                //if a result is entered add it to the database
-                if (!resultTextField.getText().isEmpty()) {
-                    String result = resultTextField.getText();
-                    db.setMatchResultToDB(date, opponent, result);
-                }
-
 
             }
+
         } catch (Exception ae) {
             createInformationDialog("Error", "Error", "Something went wrong");
         }

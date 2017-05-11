@@ -8,17 +8,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerAddMatch">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerAddMatch">
    <children>
       <Button fx:id="backButton" layoutX="62.0" layoutY="347.0" mnemonicParsing="false" onAction="#buttonPressed" text="Back to menu" />
       <Button fx:id="addMatchButton" layoutX="70.0" layoutY="233.0" mnemonicParsing="false" onAction="#buttonPressed" text="Add Match" />
       <TextField fx:id="opponentTextField" layoutX="29.0" layoutY="63.0" />
-      <TextField fx:id="dateTextField" layoutX="29.0" layoutY="124.0" />
-      <TextField fx:id="resultTextField" layoutX="29.0" layoutY="187.0" />
+      <TextField fx:id="dateTextField" layoutX="29.0" layoutY="124.0" promptText="dd/mm" />
+      <TextField fx:id="resultTextField" layoutX="29.0" layoutY="187.0" promptText="xx-xx" />
       <Label layoutX="82.0" layoutY="46.0" text="Opponent" />
       <Label layoutX="98.0" layoutY="107.0" text="Date" />
       <Label layoutX="93.0" layoutY="170.0" text="Result" />
-      <TextArea fx:id="matchView" layoutX="378.0" layoutY="109.0" prefHeight="184.0" prefWidth="180.0" />
+      <TextArea fx:id="matchView" editable="false" layoutX="285.0" layoutY="92.0" prefHeight="209.0" prefWidth="301.0" />
       <Separator layoutX="277.0" orientation="VERTICAL" prefHeight="394.0" prefWidth="6.0" />
       <TextField fx:id="textDeleteMatch" layoutX="384.0" layoutY="63.0" />
       <Text layoutX="322.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the match number you wish to delete" />

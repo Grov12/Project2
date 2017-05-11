@@ -39,7 +39,7 @@ public class ControllerCoach extends ControllerPlayer  {
     }
 
     @FXML
-    private void coachLogout(ActionEvent ae) {
+    private void coachLogout(ActionEvent ae) { // Go back to log in scene.
 
         try {
             changeScene(ae,"MainScene.fxml");
