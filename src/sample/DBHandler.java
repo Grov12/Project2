@@ -403,6 +403,22 @@ public class DBHandler {
         }
 
     }
+    public void playerReportAbsenceDB (int playerID, int trainingID) {
+
+        try (Connection conn = DriverManager.getConnection(connectionURL)) {
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM player_has_training WHERE player_PlayerID=? AND training_TrainingID=?"  );
+            pstmt.setInt(1, playerID);
+            pstmt.setInt(2, trainingID);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+    }
 
     public void editPlayer(int playerID, int yellowCard, int redCard, int goalsScored) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {

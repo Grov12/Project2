@@ -31,8 +31,6 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
     @FXML
     private TextField surNameTextField;
     @FXML
-    private TextField positionTextField;
-    @FXML
     private TextField userNameTextField;
     @FXML
     private TextField passwordTextField;
@@ -144,6 +142,9 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             dialog.setHeaderText("Error:");
             dialog.setContentText("Your input was invalid.");
             dialog.showAndWait();
+        }
+        catch (Exception e) {
+            createErrorDialog("Error","Error:","Your input was invalid");
         }
     }
 
