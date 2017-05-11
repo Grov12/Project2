@@ -71,7 +71,6 @@ public class ControllerAddMatch extends ControllerMain {
                     isResultFormatRight(resultTextField.getText());
                 }
                 ControllerGuest viewMatches = new ControllerGuest();
-                viewMatches.viewMatches(matchView);
 
                 if (db.doesMatchEntryExist(date,opponent)) {
                     duplicatesDoExistInDB(date,opponent);
@@ -86,7 +85,7 @@ public class ControllerAddMatch extends ControllerMain {
                     }
                 }
 
-
+                viewMatches.viewMatches(matchView);
             } catch(Exception ex)  {
                 createInformationDialog("Error", "Error", "You did not enter all the required information in the right format");
             }

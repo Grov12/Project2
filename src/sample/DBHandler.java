@@ -182,7 +182,7 @@ public class DBHandler {
                 String s1 = rs.getString("MatchID");
                 String s2 = rs.getString("Date");
                 String s3 = rs.getString("Opponents");
-                m = "MatchID: " + s1 + " |Date: " + s2 + " |Opponents: " + s3 + "\n";
+                m = "MatchID: " + s1 + " | Date: " + s2 + " | Opponents: " + s3+"\n";
                 matchList.add(m);
 
             }
