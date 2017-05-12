@@ -433,6 +433,15 @@ public class DBHandler {
             e.printStackTrace();
         }
     }
+    public void deleteTrainingFromDB(int index) {
+        try (Connection conn = DriverManager.getConnection(connectionURL)) {
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM training WHERE TrainingID=" + index);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
