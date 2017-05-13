@@ -54,20 +54,21 @@ public class ControllerEditPlayer extends ControllerMain implements Initializabl
         try {
         int playerID = Integer.parseInt(textPlayerID.getText());
 
-            DBHandler db = new DBHandler();
-            if(!textYellowCard.getText().isEmpty()) {
-                int yellowCard = Integer.parseInt(textYellowCard.getText());
-                db.editPlayer(playerID,yellowCard, 0, 0);
+                DBHandler db = new DBHandler();
+                if (!textYellowCard.getText().isEmpty()) {
+                    int yellowCard = Integer.parseInt(textYellowCard.getText());
+                    db.editPlayer(playerID, yellowCard);
+                }
 
-            }
-            if(!textRedCard.getText().isEmpty()) {
-                int redCard = Integer.parseInt(textRedCard.getText());
-                db.editPlayer(playerID,0,redCard,0);
-            }
-            if (!textGoal.getText().isEmpty()) {
-                int goalsScored = Integer.parseInt(textGoal.getText());
-                db.editPlayer(playerID,0,0,goalsScored);
-            }
+                if (!textRedCard.getText().isEmpty()) {
+                    int redCard = Integer.parseInt(textRedCard.getText());
+                    db.editPlayerRedCard(playerID, redCard);
+                }
+                if (!textGoal.getText().isEmpty()) {
+                    int goalsScored = Integer.parseInt(textGoal.getText());
+                    db.editPlayerGoals(playerID, goalsScored);
+                }
+
         } catch (Exception e) {
             createErrorDialog("Error", "Error", "Fill in everything.");
         }

@@ -420,18 +420,36 @@ public class DBHandler {
 
     }
 
-    public void editPlayer(int playerID, int yellowCard, int redCard, int goalsScored) {
+    public void editPlayer(int playerID, int yellowCard) {
                 try (Connection conn = DriverManager.getConnection(connectionURL)) {
-                    PreparedStatement pstm = conn.prepareStatement("UPDATE `player` SET GoalsScored=?, Yellowcards=?, Redcards=? WHERE PlayerID=" + playerID);
-                    pstm.setInt(1, goalsScored);
-                    pstm.setInt(2, yellowCard);
-                    pstm.setInt(3, redCard);
+                    PreparedStatement pstm = conn.prepareStatement("UPDATE `player` SET  Yellowcards=? WHERE PlayerID=" + playerID);
+                    pstm.setInt(1, yellowCard);
                     pstm.executeUpdate();
 
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+    public void editPlayerRedCard(int playerID, int redcard) {
+        try (Connection conn = DriverManager.getConnection(connectionURL)) {
+            PreparedStatement pstm = conn.prepareStatement("UPDATE `player` SET Redcards=? WHERE PlayerID=" + playerID);
+            pstm.setInt(1, redcard);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void editPlayerGoals(int playerID, int goalsScored) {
+        try (Connection conn = DriverManager.getConnection(connectionURL)) {
+            PreparedStatement pstm = conn.prepareStatement("UPDATE `player` SET GoalsScored=? WHERE PlayerID=" + playerID);
+            pstm.setInt(1, goalsScored);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public void deleteTrainingFromDB(int index) {
