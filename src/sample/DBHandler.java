@@ -305,15 +305,15 @@ public class DBHandler {
 
         boolean exists = false;
 
-        try (Connection conn = DriverManager.getConnection(connectionURL)) {
-            PreparedStatement pstm = conn.prepareStatement("SELECT `Opponents`,`Date` FROM `match` WHERE `Opponents`=? AND `Date`=?");
-            pstm.setString(1, opponent);
-            pstm.setString(2, date);
-            ResultSet rs = pstm.executeQuery();
+            try (Connection conn = DriverManager.getConnection(connectionURL)) {
+                PreparedStatement pstm = conn.prepareStatement("SELECT `Opponents`,`Date` FROM `match` WHERE `Opponents`=? AND `Date`=?");
+                pstm.setString(1, opponent);
+                pstm.setString(2, date);
+                ResultSet rs = pstm.executeQuery();
 
-            if (rs.next()) {
-                exists = true;
-            }
+                if (rs.next()) {
+                    exists = true;
+                }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -421,18 +421,19 @@ public class DBHandler {
     }
 
     public void editPlayer(int playerID, int yellowCard, int redCard, int goalsScored) {
-        try (Connection conn = DriverManager.getConnection(connectionURL)) {
+                try (Connection conn = DriverManager.getConnection(connectionURL)) {
+                    PreparedStatement pstm = conn.prepareStatement("UPDATE `player` SET GoalsScored=?, Yellowcards=?, Redcards=? WHERE PlayerID=" + playerID);
+                    pstm.setInt(1, goalsScored);
+                    pstm.setInt(2, yellowCard);
+                    pstm.setInt(3, redCard);
+                    pstm.executeUpdate();
 
-            PreparedStatement pstm = conn.prepareStatement("UPDATE `player` SET GoalsScored=?, Yellowcards=?, Redcards=? WHERE PlayerID=" + playerID);
-            pstm.setInt(1, goalsScored);
-            pstm.setInt(2, yellowCard);
-            pstm.setInt(3, redCard);
-            pstm.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-    }
+
+
     public void deleteTrainingFromDB(int index) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM training WHERE TrainingID=" + index);
