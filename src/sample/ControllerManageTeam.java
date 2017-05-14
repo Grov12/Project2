@@ -104,23 +104,22 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
 
         try {
             String enumName = String.valueOf(toggleGroup.getSelectedToggle().getUserData());
-            String firstname = firstNameTextField.getText();
-            if (!firstname.matches("[a-zA-ZåÅäÄöÖ]")){
+            String namePattern = "(^[\\p{L}\\-'.]+)";
+            String firstName = firstNameTextField.getText();
+            if (!firstName.matches(namePattern)){
                 throw new InputMismatchException("Your input was invalid.");
             }
-            String surname = surNameTextField.getText();
-            if (!surname.matches("[a-zA-ZåÅäÄöÖ]")){
+            String surName = surNameTextField.getText();
+            if (!surName.matches(namePattern)){
                 throw new InputMismatchException("Your input was invalid.");
             }
 
             String username = userNameTextField.getText();
             String password = passwordTextField.getText();
 
-
-
-            if (!firstname.isEmpty() && !surname.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
+            if (!firstName.isEmpty() && !surName.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
                 DBHandler dbHandler = new DBHandler();
-                dbHandler.addPlayerToDB(firstname, surname, enumName, username, password, "MalmöFF");
+                dbHandler.addPlayerToDB(firstName, surName, enumName, username, password, "MalmöFF");
                 ControllerGuest viewPlayer = new ControllerGuest();
                 viewPlayer.viewPlayers(playersInTheTeamTextArea);
 
