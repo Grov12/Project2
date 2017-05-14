@@ -285,20 +285,6 @@ public class DBHandler {
         return playerList;
     }
 
-    public void viewTeamDB() {
-        try (Connection connection = DriverManager.getConnection(connectionURL)) {
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM `team`"); //Implement the correct table
-            while (rs.next()) {
-                System.out.println(rs.getString("CoachUsername"));
-
-            }
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     //checks if match entry exist in database to prevent duplicate entries
     public boolean doesMatchEntryExist(String date, String opponent) {

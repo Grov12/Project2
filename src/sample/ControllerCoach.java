@@ -29,7 +29,6 @@ public class ControllerCoach extends ControllerPlayer  {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       choiceBox.getItems().add("View Team");
         choiceBox.getItems().add("View Matches");
         choiceBox.getItems().add("View Players");
         choiceBox.getItems().add("View Player Statistics");
@@ -82,11 +81,6 @@ public class ControllerCoach extends ControllerPlayer  {
 
 
     public void menuOptions() {
-
-        if(choiceBox.getValue().equals("View Team")) {
-            viewTeam();
-
-        }
 
         if (choiceBox.getValue().equals("View Matches")){
             viewMatches(coachTextArea);

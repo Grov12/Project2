@@ -33,7 +33,6 @@ public class ControllerGuest extends ControllerMain  {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        choiceBox.getItems().add("View Team");
         choiceBox.getItems().add("View Matches");
         choiceBox.getItems().add("View Players");
         choiceBox.getItems().add("View Player Statistics");
@@ -56,10 +55,6 @@ public class ControllerGuest extends ControllerMain  {
     }
 
     public void menuOptions() {
-
-        if (choiceBox.getValue().equals("View Team")) {
-            viewTeam();
-        }
 
         if (choiceBox.getValue().equals("View Matches")){
             viewMatches(guestTextArea);
@@ -86,15 +81,6 @@ public class ControllerGuest extends ControllerMain  {
     }
 
 
-    public static void viewTeam() {
-        DBHandler dbView = new DBHandler();
-
-        dbView.viewTrainingDB();
-
-
-        dbView.viewTeamDB();
-
-    }
 
     public void viewMatches(TextArea text) {
         try{
