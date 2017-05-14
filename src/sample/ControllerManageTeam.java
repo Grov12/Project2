@@ -117,13 +117,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             String username = userNameTextField.getText();
             String password = passwordTextField.getText();
 
-
-<<<<<<< HEAD
             if (!firstName.isEmpty() && !surName.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
-=======
-
-            if (!firstname.isEmpty() && !surname.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
->>>>>>> f64803c0da5c225a782b4b7b93315670c6987af6
                 DBHandler dbHandler = new DBHandler();
                 dbHandler.addPlayerToDB(firstName, surName, enumName, username, password, "MalmöFF");
                 ControllerGuest viewPlayer = new ControllerGuest();
