@@ -58,14 +58,14 @@ public class ControllerScheduleTraining extends ControllerMain {
             try {
                 DBHandler db = new DBHandler();
                 String date = dateTextField.getText();
-                String pattern = "([1-9]|[0-2][0-9]|[0-3][0-1])/([1-9]|[0-1][0-2])";
-                if (!date.matches(pattern)) {
+                String datePattern = "([1-9]|[0-2][0-9]|[0-3][0-1])/([1-9]|[0-1][0-2])";
+                if (!date.matches(datePattern)) {
                     throw new InputMismatchException();
                 }
 
                 String time = timeTextField.getText();
-                String timepattern = "([0-1][0-9]|[2][0-3]):([0-5][0-9])";
-                if (!time.matches(timepattern)){
+                String timePattern = "([0-1][0-9]|[2][0-3]):([0-5][0-9])";
+                if (!time.matches(timePattern)){
                     throw new InputMismatchException();
                 }
 
