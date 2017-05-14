@@ -420,20 +420,39 @@ public class DBHandler {
 
     }
 
-    public void editPlayer(int playerID, int yellowCard) {
+    public void editPlayerYellowCard(int playerID, int yellowCard) {
+
                 try (Connection conn = DriverManager.getConnection(connectionURL)) {
-                    PreparedStatement pstm = conn.prepareStatement("UPDATE `player` SET  Yellowcards=? WHERE PlayerID=" + playerID);
-                    pstm.setInt(1, yellowCard);
+
+                    //get the yellowcards the player already has.
+                    PreparedStatement pstm = conn.prepareStatement("select * from player where PlayerID = ?");
+                    pstm.setInt(1, playerID);
+                    ResultSet rs = pstm.executeQuery();
+                    rs.next();
+                    int beforeYellowCards = rs.getInt("Yellowcards");
+
+                    //adds the cards entered and prevoius cards together and updates the databse
+                    pstm = conn.prepareStatement("UPDATE `player` SET  Yellowcards=? WHERE PlayerID=" + playerID);
+                    pstm.setInt(1,beforeYellowCards+yellowCard);
                     pstm.executeUpdate();
 
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-    public void editPlayerRedCard(int playerID, int redcard) {
+    public void editPlayerRedCard(int playerID, int redCard) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
-            PreparedStatement pstm = conn.prepareStatement("UPDATE `player` SET Redcards=? WHERE PlayerID=" + playerID);
-            pstm.setInt(1, redcard);
+
+            //get the redcard the player already has.
+            PreparedStatement pstm = conn.prepareStatement("select * from player where PlayerID = ?");
+            pstm.setInt(1, playerID);
+            ResultSet rs = pstm.executeQuery();
+            rs.next();
+            int beforeRedCards = rs.getInt("Redcards");
+
+            //adds the cards entered and prevoius cards together and updates the database
+            pstm = conn.prepareStatement("UPDATE `player` SET Redcards=? WHERE PlayerID=" + playerID);
+            pstm.setInt(1, beforeRedCards+redCard);
             pstm.executeUpdate();
 
         } catch (SQLException e) {
@@ -442,8 +461,17 @@ public class DBHandler {
     }
     public void editPlayerGoals(int playerID, int goalsScored) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
-            PreparedStatement pstm = conn.prepareStatement("UPDATE `player` SET GoalsScored=? WHERE PlayerID=" + playerID);
-            pstm.setInt(1, goalsScored);
+
+            //get the goals the player already has.
+            PreparedStatement pstm = conn.prepareStatement("select * from player where PlayerID = ?");
+            pstm.setInt(1, playerID);
+            ResultSet rs = pstm.executeQuery();
+            rs.next();
+            int beforeGoals = rs.getInt("GoalsScored");
+
+            //adds the goals entered and prevoius goals together and updates the database
+            pstm = conn.prepareStatement("UPDATE `player` SET GoalsScored=? WHERE PlayerID=" + playerID);
+            pstm.setInt(1, beforeGoals+goalsScored);
             pstm.executeUpdate();
 
         } catch (SQLException e) {
