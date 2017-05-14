@@ -57,7 +57,7 @@ public class ControllerEditPlayer extends ControllerMain implements Initializabl
                 DBHandler db = new DBHandler();
                 if (!textYellowCard.getText().isEmpty()) {
                     int yellowCard = Integer.parseInt(textYellowCard.getText());
-                    db.editPlayer(playerID, yellowCard);
+                    db.editPlayerYellowCard(playerID, yellowCard);
                 }
 
                 if (!textRedCard.getText().isEmpty()) {
