@@ -31,6 +31,7 @@ public class ControllerMain implements Initializable {
         choiceBox.getItems().add("Coach");
         choiceBox.getItems().add("Player");
 
+
     }
 
     @FXML

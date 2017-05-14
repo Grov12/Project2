@@ -117,6 +117,7 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             String password = passwordTextField.getText();
 
 
+
             if (!firstname.isEmpty() && !surname.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
                 DBHandler dbHandler = new DBHandler();
                 dbHandler.addPlayerToDB(firstname, surname, enumName, username, password, "MalmöFF");

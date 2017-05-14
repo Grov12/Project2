@@ -451,7 +451,6 @@ public class DBHandler {
         }
     }
 
-
     public void deleteTrainingFromDB(int index) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM training WHERE TrainingID=" + index);
