@@ -22,11 +22,12 @@ public class ControllerMain implements Initializable {
     @FXML
     private TextField textUsername;
     @FXML
-    private TextField textPassword;
+    private PasswordField textPassword;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         choiceBox.getItems().add("Guest");
         choiceBox.getItems().add("Coach");
         choiceBox.getItems().add("Player");
