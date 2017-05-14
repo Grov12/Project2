@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
@@ -30,18 +31,26 @@ public class ControllerScheduleTraining extends ControllerMain {
     private Button backButton;
     @FXML
     private Button addButton;
+    @FXML
+    private TextArea scheduleTrainArea;
+    @FXML
+    private TextField trainingIdRemove;
+    @FXML
+    private Button removeTraining;
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
+        ControllerGuest viewTraining = new ControllerGuest();
+        viewTraining.viewTraining(scheduleTrainArea);
 
     }
 
     @FXML
     private void buttonPressed(ActionEvent ae) {
+
+        ControllerGuest viewTraining = new ControllerGuest();
 
         Button source = (Button) ae.getSource();
 
@@ -78,11 +87,26 @@ public class ControllerScheduleTraining extends ControllerMain {
                     }
                 }
 
+                viewTraining.viewTraining(scheduleTrainArea);
+
 
             } catch (NullPointerException ex) {
                 createErrorDialog("Error", "An error occured.", "You did not enter all the required information.");
             } catch (InputMismatchException ex){
                 createErrorDialog("Error", "An error occured.", "You did not enter the information in the correct format.");
+            }
+        }
+        if (source == removeTraining){
+            try{
+                DBHandler dbHandler = new DBHandler();
+                int trainingID = Integer.parseInt(trainingIdRemove.getText());
+                dbHandler.deleteTrainingFromDB(trainingID);
+                viewTraining.viewTraining(scheduleTrainArea);
+            }catch (NullPointerException ex){
+                createErrorDialog("Error", "An error occured.", "You did not enter all the required information.");
+            }catch (InputMismatchException ex){
+                createErrorDialog("Error", "An error occured.", "You did not enter the information in the correct format.");
+
             }
         }
     }

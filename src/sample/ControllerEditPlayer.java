@@ -53,13 +53,22 @@ public class ControllerEditPlayer extends ControllerMain implements Initializabl
     private void saveToDatabase() {
         try {
         int playerID = Integer.parseInt(textPlayerID.getText());
-        int yellowCard = Integer.parseInt(textYellowCard.getText());
-        int redCard = Integer.parseInt(textRedCard.getText());
-        int goalsScored = Integer.parseInt(textGoal.getText());
 
+                DBHandler db = new DBHandler();
+                if (!textYellowCard.getText().isEmpty()) {
+                    int yellowCard = Integer.parseInt(textYellowCard.getText());
+                    db.editPlayerYellowCard(playerID, yellowCard);
+                }
 
-            DBHandler db = new DBHandler();
-            db.editPlayer(playerID, yellowCard, redCard, goalsScored);
+                if (!textRedCard.getText().isEmpty()) {
+                    int redCard = Integer.parseInt(textRedCard.getText());
+                    db.editPlayerRedCard(playerID, redCard);
+                }
+                if (!textGoal.getText().isEmpty()) {
+                    int goalsScored = Integer.parseInt(textGoal.getText());
+                    db.editPlayerGoals(playerID, goalsScored);
+                }
+
         } catch (Exception e) {
             createErrorDialog("Error", "Error", "Fill in everything.");
         }

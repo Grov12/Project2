@@ -285,35 +285,21 @@ public class DBHandler {
         return playerList;
     }
 
-    public void viewTeamDB() {
-        try (Connection connection = DriverManager.getConnection(connectionURL)) {
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM `team`"); //Implement the correct table
-            while (rs.next()) {
-                System.out.println(rs.getString("CoachUsername"));
-
-            }
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     //checks if match entry exist in database to prevent duplicate entries
     public boolean doesMatchEntryExist(String date, String opponent) {
 
         boolean exists = false;
 
-        try (Connection conn = DriverManager.getConnection(connectionURL)) {
-            PreparedStatement pstm = conn.prepareStatement("SELECT `Opponents`,`Date` FROM `match` WHERE `Opponents`=? AND `Date`=?");
-            pstm.setString(1, opponent);
-            pstm.setString(2, date);
-            ResultSet rs = pstm.executeQuery();
+            try (Connection conn = DriverManager.getConnection(connectionURL)) {
+                PreparedStatement pstm = conn.prepareStatement("SELECT `Opponents`,`Date` FROM `match` WHERE `Opponents`=? AND `Date`=?");
+                pstm.setString(1, opponent);
+                pstm.setString(2, date);
+                ResultSet rs = pstm.executeQuery();
 
-            if (rs.next()) {
-                exists = true;
-            }
+                if (rs.next()) {
+                    exists = true;
+                }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -420,14 +406,69 @@ public class DBHandler {
 
     }
 
-    public void editPlayer(int playerID, int yellowCard, int redCard, int goalsScored) {
+    public void editPlayerYellowCard(int playerID, int yellowCard) {
+
+                try (Connection conn = DriverManager.getConnection(connectionURL)) {
+
+                    //get the yellowcards the player already has.
+                    PreparedStatement pstm = conn.prepareStatement("select * from player where PlayerID = ?");
+                    pstm.setInt(1, playerID);
+                    ResultSet rs = pstm.executeQuery();
+                    rs.next();
+                    int beforeYellowCards = rs.getInt("Yellowcards");
+
+                    //adds the cards entered and prevoius cards together and updates the databse
+                    pstm = conn.prepareStatement("UPDATE `player` SET  Yellowcards=? WHERE PlayerID=" + playerID);
+                    pstm.setInt(1,beforeYellowCards+yellowCard);
+                    pstm.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    public void editPlayerRedCard(int playerID, int redCard) {
         try (Connection conn = DriverManager.getConnection(connectionURL)) {
 
-            PreparedStatement pstm = conn.prepareStatement("UPDATE `player` SET GoalsScored=?, Yellowcards=?, Redcards=? WHERE PlayerID=" + playerID);
-            pstm.setInt(1, goalsScored);
-            pstm.setInt(2, yellowCard);
-            pstm.setInt(3, redCard);
+            //get the redcard the player already has.
+            PreparedStatement pstm = conn.prepareStatement("select * from player where PlayerID = ?");
+            pstm.setInt(1, playerID);
+            ResultSet rs = pstm.executeQuery();
+            rs.next();
+            int beforeRedCards = rs.getInt("Redcards");
+
+            //adds the cards entered and prevoius cards together and updates the database
+            pstm = conn.prepareStatement("UPDATE `player` SET Redcards=? WHERE PlayerID=" + playerID);
+            pstm.setInt(1, beforeRedCards+redCard);
             pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void editPlayerGoals(int playerID, int goalsScored) {
+        try (Connection conn = DriverManager.getConnection(connectionURL)) {
+
+            //get the goals the player already has.
+            PreparedStatement pstm = conn.prepareStatement("select * from player where PlayerID = ?");
+            pstm.setInt(1, playerID);
+            ResultSet rs = pstm.executeQuery();
+            rs.next();
+            int beforeGoals = rs.getInt("GoalsScored");
+
+            //adds the goals entered and prevoius goals together and updates the database
+            pstm = conn.prepareStatement("UPDATE `player` SET GoalsScored=? WHERE PlayerID=" + playerID);
+            pstm.setInt(1, beforeGoals+goalsScored);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteTrainingFromDB(int index) {
+        try (Connection conn = DriverManager.getConnection(connectionURL)) {
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM training WHERE TrainingID=" + index);
+            pstmt.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();

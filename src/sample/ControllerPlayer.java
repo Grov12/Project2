@@ -30,7 +30,6 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        choiceBoxView.getItems().add("View Team");
         choiceBoxView.getItems().add("View Matches");
         choiceBoxView.getItems().add("View Players");
         choiceBoxView.getItems().add("View Player Statistics");
@@ -63,10 +62,6 @@ public class ControllerPlayer extends ControllerGuest implements Initializable {
         // Prints the output from selected choiceBox and prints to Text area.
         @FXML
         private void viewBoxPlayer (ActionEvent ae){
-            if(choiceBoxView.getValue().equals("View Team")) {
-                viewTeam();
-
-            }
 
             if (choiceBoxView.getValue().equals("View Matches")){
                 viewMatches(playerTextArea);
