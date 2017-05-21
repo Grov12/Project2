@@ -105,13 +105,35 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
         try {
             String enumName = String.valueOf(toggleGroup.getSelectedToggle().getUserData());
             String namePattern = "(^[\\p{L}\\-'.]+)";
+            int hyphenCount = 0;
             String firstName = firstNameTextField.getText();
-            if (!firstName.matches(namePattern)){
-                throw new InputMismatchException("Your input was invalid.");
+
+            for (int i=0; i<firstName.length(); i++){
+                if (firstName.charAt(i)=='-'){
+                    hyphenCount++;
+                }
             }
+
+            if (hyphenCount>1){
+                throw new InputMismatchException();
+            }
+            if (!firstName.matches(namePattern)){
+                throw new InputMismatchException();
+            }
+
             String surName = surNameTextField.getText();
+            hyphenCount = 0;
+            for (int n=0; n<surName.length(); n++){
+                if (surName.charAt(n)=='-'){
+                    hyphenCount++;
+                }
+            }
+
+            if (hyphenCount>1){
+                throw new InputMismatchException();
+            }
             if (!surName.matches(namePattern)){
-                throw new InputMismatchException("Your input was invalid.");
+                throw new InputMismatchException();
             }
 
             String username = userNameTextField.getText();
@@ -128,8 +150,10 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
             else {
                 throw new NullPointerException("Everything was not filled in");
             }
+        } catch (InputMismatchException e){
+            createErrorDialog("Error", "Incorrect input", "Your input was invalid.");
         } catch (Exception e) {
-            createErrorDialog("Please fill in everything", "Error", "Fill in everything!");
+            createErrorDialog("Error", "Please fill in everything", "Fill in everything!");
         }
     }
     // Deleting player information from database.
