@@ -49,7 +49,6 @@ public class ControllerManageTeam extends ControllerMain implements Initializabl
 
 
     @Override
-
     public void initialize(URL location, ResourceBundle resources) {
             ControllerGuest viewPlayer = new ControllerGuest();
             viewPlayer.viewPlayers(playersInTheTeamTextArea);
