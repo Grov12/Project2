@@ -40,8 +40,8 @@ public class ControllerMain implements Initializable {
 
         if (choiceBox.getValue().equals("Coach")) {
             try {
-                 //throwExceptionsCoach();
-            changeScene(ae,"CoachScene.fxml");
+                throwExceptionsCoach();
+                changeScene(ae, "CoachScene.fxml");
             } catch (IOException var7) {
                 var7.printStackTrace();
             } catch (NullPointerException e) {
@@ -56,7 +56,7 @@ public class ControllerMain implements Initializable {
             try {
 
                 throwExceptionPlayer();
-                changeScene(ae,"PlayerScene.fxml");
+                changeScene(ae, "PlayerScene.fxml");
 
             } catch (IOException var7) {
                 var7.printStackTrace();
@@ -66,27 +66,28 @@ public class ControllerMain implements Initializable {
                 dialog.setHeaderText("Error:");
                 dialog.setContentText("Both fields must be filled in!");
                 dialog.showAndWait();
-            }catch(IndexOutOfBoundsException ex){
-                createInformationDialog("Login Failed","Login Falied","Please try again");
-            }
-            catch (Exception e) {
-               e.printStackTrace();
+            } catch (IndexOutOfBoundsException ex) {
+                createInformationDialog("Login Failed", "Login Falied", "Please try again");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
 
 
-        }  if (choiceBox.getValue().equals("Guest")) {
+        }
+        if (choiceBox.getValue().equals("Guest")) {
 
             try {
-                changeScene(ae,"GuestScene.fxml");
+                changeScene(ae, "GuestScene.fxml");
             } catch (IOException var7) {
                 var7.printStackTrace();
-            }catch (NullPointerException e) {
+            } catch (NullPointerException e) {
                 System.out.println("hi");
             }
 
 
         }
     }
+
     @FXML
     private void handleMenuItemEdit() {
         if (!textUsername.getText().isEmpty() || !textPassword.getText().isEmpty() || !choiceBox.getValue().equals(null)) {
@@ -100,63 +101,63 @@ public class ControllerMain implements Initializable {
     }
 
     //Method for changing scene
-    public void changeScene (ActionEvent event, String fxml) throws IOException{
-        Node node = (Node)event.getSource();
-        Stage stage = (Stage)node.getScene().getWindow();
+    public void changeScene(ActionEvent event, String fxml) throws IOException {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-    public Alert createConformationDialog(String titleText,String headerText){
+
+    public Alert createConformationDialog(String titleText, String headerText) {
         Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
         dialog.setTitle(titleText);
         dialog.setHeaderText(headerText);
-        dialog.getButtonTypes().set(0,ButtonType.YES);
-        dialog.getButtonTypes().set(1,ButtonType.NO);
+        dialog.getButtonTypes().set(0, ButtonType.YES);
+        dialog.getButtonTypes().set(1, ButtonType.NO);
         dialog.showAndWait();
         return dialog;
     }
-    public void createInformationDialog(String titleText,String headerText,String contextText){
+
+    public void createInformationDialog(String titleText, String headerText, String contextText) {
         Alert dialog = new Alert(Alert.AlertType.INFORMATION);
         dialog.setTitle(titleText);
         dialog.setHeaderText(headerText);
         dialog.setContentText(contextText);
         dialog.showAndWait();
     }
-    public void createErrorDialog(String titleText, String headerText, String contentText){
+
+    public void createErrorDialog(String titleText, String headerText, String contentText) {
         Alert dialog = new Alert(Alert.AlertType.ERROR);
         dialog.setTitle(titleText);
         dialog.setHeaderText(headerText);
         dialog.setContentText(contentText);
         dialog.showAndWait();
     }
-     @FXML
-     public void throwExceptionPlayer() {
-       DBHandler dbHandler = new DBHandler();
-       boolean tempo = dbHandler.handleLoginPlayer(textUsername.getText(),textPassword.getText());
-      if(tempo == false) {
 
-     throw new IndexOutOfBoundsException();
-      }
-}
+    @FXML
+    public void throwExceptionPlayer() {
+        DBHandler dbHandler = new DBHandler();
+        boolean tempo = dbHandler.handleLoginPlayer(textUsername.getText(), textPassword.getText());
+        if (tempo == false) {
+
+            throw new IndexOutOfBoundsException();
+        }
+    }
 
 
-
-
-// @FXML
-   // public void throwExceptionsCoach() {
-     //   DBHandler dbHandler = new DBHandler();
-     //   boolean tempo = dbHandler.handleLoginCoach(textUsername.getText(),textPassword.getText());
-      //  if(tempo == false) {
-
-          // throw new NullPointerException();
-      //  }
-      //  else {
-        //    System.out.println("hi");
+    @FXML
+    public void throwExceptionsCoach() {
+        DBHandler dbHandler = new DBHandler();
+        boolean tempo = dbHandler.handleLoginCoach(textUsername.getText(), textPassword.getText());
+        if (tempo == false) {
+            throw new NullPointerException();
         }
 
-   // } //
+
+    }
+}
 
 
 

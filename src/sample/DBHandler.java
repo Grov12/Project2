@@ -161,10 +161,10 @@ public class DBHandler {
 
                 if (checkUser.equals(userName) && checkPass.equals(password)) {
                     result = true;
-                    System.out.println(result);
+
                 } else {
                     result = false;
-                    System.out.println(result);
+
                 }
 
             }
