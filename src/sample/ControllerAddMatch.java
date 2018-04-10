@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
  */
 public class ControllerAddMatch extends ControllerMain {
 
+
     @FXML
     private TextField opponentTextField;
     @FXML
@@ -55,6 +56,7 @@ public class ControllerAddMatch extends ControllerMain {
         if (source == backButton) { //Go back to coach scene.
             try {
                 changeScene(ae, "CoachScene.fxml");
+                System.out.println("dk");
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
